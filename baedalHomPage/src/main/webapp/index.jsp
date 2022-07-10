@@ -16,6 +16,8 @@
 		</select>
 		
 		아이스초코 맛있다
+		나는 3시에 떠난다
+		
 		<h1>안녕 팀프로젝트</h1>
         <input type="text" name="id" placeholder="아이디 입력">
         <input type="password" name="password" placeholder="비밀번호 입력">
