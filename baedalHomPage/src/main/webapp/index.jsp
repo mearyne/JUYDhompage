@@ -7,8 +7,6 @@
 <title>index homepage</title>
 </head>
 <body>
-	
-	
 	<form method="post">
 		<select value="chkUser">
 			<option>
