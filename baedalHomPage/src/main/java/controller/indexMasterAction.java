@@ -1,7 +1,7 @@
 package controller;
 
-// °ü¸®ÀÚ ·Î±×ÀÎÀ» ÇÏ±â À§ÇØ ¾ÆÀÌµð, ºñ¹Ð¹øÈ£¸¦ ÀÔ·ÂÇÏ°í 
-//'·Î±×ÀÎÇÏ±â'¹öÆ°À» ´­·¶À»¶§ MYSQL¿¡¼­ µ¥ÀÌÅÍ¸¦ È®ÀÎÇÏ¿© ·Î±×ÀÎ ¿©ºÎ¸¦ ÆÇ´ÜÇÑ´Ù
+//ê´€ë¦¬ìž ë¡œê·¸ì¸ì„ í•˜ê¸° ìœ„í•´ ì•„ì´ë””, ë¹„ë°€ë²ˆí˜¸ë¥¼ ìž…ë ¥í•˜ê³  
+//'ë¡œê·¸ì¸í•˜ê¸°'ë²„íŠ¼ì„ ëˆŒë €ì„ë•Œ MYSQLì—ì„œ ë°ì´í„°ë¥¼ í™•ì¸í•˜ì—¬ ë¡œê·¸ì¸ ì—¬ë¶€ë¥¼ íŒë‹¨í•œë‹¤
 
 import java.io.IOException;
 import javax.servlet.ServletException;
