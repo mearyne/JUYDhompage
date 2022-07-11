@@ -6,6 +6,7 @@
 <title>favoriteShop list</title>
 </head>
 <body>
+
 	<%
 	// 찜목록 가게입니다		
 	%>

@@ -10,16 +10,18 @@
 	<%
 	// 메인 페이지입니다.
 	%>
+	<header>
+	<!-- 상단 로고 ,로그인, 로그아웃 버튼 -->
+		<form name="login">
+			<input type="button" value="로그인">
+			<input type="button" value="마이페이지">
+		</form>
+	</header>
 	
-	<form method="post">
-		<select value="chkUser">
-			<option>
-			<option>
-		</select>
-        <input type="text" name="id" placeholder="아이디 입력">
-        <input type="password" name="password" placeholder="비밀번호 입력">
-        <input type="submit" value="로그인" onclick=chkLogin()>
-    </form>
+	<form>
+	
+	
+	</form>
     
     <script src="./js/index.js"></script>
 
