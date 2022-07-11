@@ -8,6 +8,17 @@ public class menuDTO {
 	private String menuName;
 	private String menuPicture;
 	private String menuContents;
+	
+	public menuDTO(int menuCode, int shopCode, int menuPrice, String menuName, String menuPicture,
+			String menuContents) {
+		this.menuCode = menuCode;
+		this.shopCode = shopCode;
+		this.menuPrice = menuPrice;
+		this.menuName = menuName;
+		this.menuPicture = menuPicture;
+		this.menuContents = menuContents;
+	}
+	
 	public int getMenuCode() {
 		return menuCode;
 	}

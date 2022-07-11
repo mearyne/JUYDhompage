@@ -10,9 +10,24 @@ public class shopDTO {
 	
 	private int shopCode;
 	private int masterCode;
-	private int shopStar;
+	private int shopStar;	
 	
-	
+	public shopDTO(String shopName, String shopCategory, String shopAddress, String shopPic, String shopContact,
+			String shopContents, int shopCode, int masterCode, int shopStar, int reviewNum) {
+		
+		this.shopName = shopName;
+		this.shopCategory = shopCategory;
+		this.shopAddress = shopAddress;
+		this.shopPic = shopPic;
+		this.shopContact = shopContact;
+		this.shopContents = shopContents;
+		this.shopCode = shopCode;
+		this.masterCode = masterCode;
+		this.shopStar = shopStar;
+		this.reviewNum = reviewNum;
+	}
+
+
 	public String getShopName() {
 		return shopName;
 	}

@@ -7,6 +7,17 @@ public class masterDTO {
 	private String masterId;
 	private String masterPw;
 	private String masterContact;
+	
+	
+	
+	public masterDTO(int masterCode, int shopCode, String masterId, String masterPw, String masterContact) {
+		
+		this.masterCode = masterCode;
+		this.shopCode = shopCode;
+		this.masterId = masterId;
+		this.masterPw = masterPw;
+		this.masterContact = masterContact;
+	}
 	public int getMasterCode() {
 		return masterCode;
 	}

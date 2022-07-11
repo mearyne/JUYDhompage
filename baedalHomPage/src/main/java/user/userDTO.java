@@ -6,6 +6,16 @@ public class userDTO {
 	private String userId;
 	private String userPw;
 	
+	
+	
+	public userDTO(int userCode, String userName, String userId, String userPw, String userContact) {
+		
+		this.userCode = userCode;
+		this.userName = userName;
+		this.userId = userId;
+		this.userPw = userPw;
+		this.userContact = userContact;
+	}
 	public int getUserCode() {
 		return userCode;
 	}
