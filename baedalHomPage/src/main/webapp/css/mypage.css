@@ -4,10 +4,12 @@
 	url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap')
 	;
 
-/* 메인페이지에 대한 디자인css입니다 */
 * {
 	margin: 0;
 	padding: 0;
+}
+body {
+	-ms-overflow-style: none;
 }
 
 #wrapper {
@@ -86,19 +88,67 @@ footer {
 .mypage{
     display: flex;
     align-items: stretch;
-    
-  
 }
 div.pagelist{
     display: flex;
-    flex-wrap: nowrap;
-    background-color: crimson;
+    flex-wrap: wrap;
+	flex-direction: column;
+    background-color: white;
     flex-shrink: 0;
-	width: 150px;
+	border-right: solid 1px thistle;
+	align-items:  center;
 }
+
 div.pagedetail{
     display: flex;
-    flex-wrap: wrap;
     flex-grow: 1;
-    background-color: blue;
+	flex-direction: column;
+    background-color: white;
+	color:black;
+	text-align: left;
+	font-family: 'Black Han Sans', sans-serif;
+}
+
+a.userpage{
+	margin: 10px;
+	padding: 10px;
+	font-size: 20px;
+	width: 150px;
+	text-decoration: none;
+	color:darkblue;
+	text-align: center;
+	font-family: 'Black Han Sans', sans-serif;
+}
+.mydetail{
+	font-size: 20px;
+	margin: 50px;
+}
+
+input[type="submit"]:hover, select:hover {
+    background-color: grey;
+	width: AUTO;
+}
+input[type="button"][type="submit"] {
+    width: 50px;
+	background-color: aquamarine;
+}
+
+ input, select {
+   background-color: ghostwhite;
+    margin: 10px;
+    border: solid 1px lightblue;
+}
+
+input[type="text"] {
+    width: 180px;
+}
+
+article {
+	width: 99%;
+	height: 20%;
+	background-color: grey;
+	border: solid 2px grey;
+	border-radius: 12px;
+	/* 여백 주기 */
+	margin: 1px
 }
