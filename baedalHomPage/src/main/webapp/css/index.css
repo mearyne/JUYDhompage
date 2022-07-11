@@ -66,7 +66,7 @@ section {
 aside {
 	float: right;
 	width: 15%;
-	height: 300px;
+	height: 90vh;
 	background-color: white;
 	text-align: center;
 	padding: 0.073% 0 0 0;
@@ -82,4 +82,13 @@ footer {
 
 .footerfont {
 	color: aliceblue;
+}
+
+div#map {
+	width: 60%;
+    height: 100%;
+}
+
+div#info {
+	width: 40%;
 }

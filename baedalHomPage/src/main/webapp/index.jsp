@@ -4,6 +4,10 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="./css/index.css">
+
+<!-- kakao map을 불러오기 위한 코드입니다 -->
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7c74772d00f549d2606dc566151ba1cd"></script>
+
 <title>main page</title>
 </head>
 <body>
@@ -18,22 +22,20 @@
 		<div class="logo">음식예약 사이트</div>
 	</header>
 
-	<aside>
-		<h2>사이드바</h2>
-	</aside>
+	<aside></aside>
 
 	<section>
-		<h2>본문</h2>
+		<div id="map"></div>
+		<div id="info">정보
+			<button></button>
+		
+		</div>
 	</section>
 
-	<aside>
-		<h2>사이드바</h2>
-	</aside>
+	<aside></aside>
 
 	<footer>
-		<p class="footerfont">
-			정의형 이정목 송윤주 우다영 <br> 이건 footer
-		</p>
+		<p class="footerfont"></p>
 	</footer>
 
 	<script src="./js/index.js"></script>
