@@ -9,7 +9,7 @@ public class shopDTO {
 	private String shopContents;
 	
 	private int shopCode;
-	private int masterCode;
+	private int masterCode; 
 	private int shopStar;	
 	
 	public shopDTO(String shopName, String shopCategory, String shopAddress, String shopPic, String shopContact,

@@ -5,7 +5,7 @@ public class userDTO {
 	private String userName;
 	private String userId; 
 	private String userPw;
-	
+	 
 	
 	
 	public userDTO(int userCode, String userName, String userId, String userPw, String userContact) {
