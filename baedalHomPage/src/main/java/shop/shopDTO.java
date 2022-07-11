@@ -8,7 +8,7 @@ public class shopDTO {
 	private String shopContact;
 	private String shopContents;
 	
-	private int shopCode;
+	private int shopCode; 
 	private int masterCode; 
 	private int shopStar;	
 	

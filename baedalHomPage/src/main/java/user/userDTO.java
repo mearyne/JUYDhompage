@@ -3,7 +3,7 @@ package user;
 public class userDTO {
 	private int userCode;
 	private String userName;
-	private String userId; 
+	private String userId;  
 	private String userPw;
 	 
 	

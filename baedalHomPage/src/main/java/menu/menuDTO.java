@@ -1,6 +1,6 @@
 package menu;
 
-public class menuDTO {
+public class menuDTO { 
 	private int menuCode;
 	private int shopCode;
 	private int menuPrice;
