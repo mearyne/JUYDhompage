@@ -22,7 +22,7 @@ public class menuDAO {
 		
 		//1.
 		String sql= "insert into menu values(1,2,3,'4','5','6')"; //sql은 인덱스 1부터 시작
-		try {
+		try { 
 			conn=DBManager.getConnection("booking");
 			pstmt = conn.prepareStatement(sql);
 			

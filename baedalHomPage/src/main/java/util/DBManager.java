@@ -15,7 +15,7 @@ public class DBManager {
 		String password = "root";
 		
 		try {
-//			Class.forName("com.mysql.cj.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection(url + database, user, password);
 			System.out.println("DB연동 성공");
 			return conn;
