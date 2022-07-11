@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="validation.js"></script>
+    <script src="index.js"></script>
     <style>
     @import
 	url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
@@ -136,6 +136,7 @@ header {
     color: #333;
     box-sizing: border-box;
     }
+ 
 
     </style>
     <title>AGREEMENT</title>
@@ -360,7 +361,7 @@ eXpert 서비스 및 eXpert 센터 가입 등록정보 : 신청일로부터 6개
        </div>
         </div>
         <div><input type="checkbox" name="choice" ></div> 
-        <div><span id=turm_title> 위치기반서비스 이용약관 동의</span><span id="turms_necessary">(필수)</span>
+        <div><span id=turm_title> 위치기반서비스 이용약관 동의<span id="turms_necessary">(필수)</span></span>
             <div class="contain" id="font">
                 위치기반서비스 이용약관에 동의하시면, 위치를 활용한 광고 정보 수신 등을 포함하는 음식점 위치기반 서비스를 이용할 수 있습니다.
 
@@ -437,12 +438,12 @@ eXpert 서비스 및 eXpert 센터 가입 등록정보 : 신청일로부터 6개
        </div>
         </div>
         <div><input type="checkbox" name="choice" ></div> 
-        <div><span id="turm_title"> 프로모션 정보 수신 동의</span><span id="turms">(선택)</span>
+        <div><span id="turm_title"> 프로모션 정보 수신 동의<span id="turms_necessary">(선택)</span></span>
             <div class="event_message" id="font">
                 음식점에서 제공하는 이벤트/혜택 등 다양한 정보를 휴대전화(음식점앱 알림 또는 문자), 이메일로 받아보실 수 있습니다. 일부 서비스(별도 회원 체계로 운영하거나 음식점 가입 이후 추가 가입하여 이용하는 서비스 등)의 경우, 개별 서비스에 대해 별도 수신 동의를 받을 수 있으며, 이때에도 수신 동의에 대해 별도로 안내하고 동의를 받습니다.
             </div>
-            <input type="button" value="취소" onclick="checkval(form)">
-            <input type="button" value="확인" onclick="checkval(form)">
+            <input type="button"  value="취소" onclick="checkval(form)">
+            <input type="button"  value="확인" onclick="checkval(form)">
        </div>
         </div>
     </div>
