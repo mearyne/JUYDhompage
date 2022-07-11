@@ -1,3 +1,85 @@
 @charset "UTF-8";
 
+@import
+	url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap')
+	;
+
 /* 메인페이지에 대한 디자인css입니다 */
+* {
+	margin: 0;
+	padding: 0;
+}
+
+#wrapper {
+	height: auto;
+	min-height: 100%;
+	/* padding-bottom: px; */
+}
+
+header {
+	height: 130px;
+	display: flex;
+	flex-direction: column;
+}
+
+.headerButton {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.mainButton {
+	width: 70px;
+	height: 25px;
+	/* 수정을 요함 */
+	font-family: 'Nanum Gothic';
+	text-align: center;
+	color: white;
+	background: black;
+	border: solid 2px grey;
+	border-radius: 12px;
+}
+
+#mypageButton {
+	width: 90px;
+}
+
+.logo {
+	font-family: 'Black Han Sans', sans-serif;
+	font-size: 65px;
+	text-align: center;
+}
+
+.layout {
+	width: 100%;
+	margin: 0 auto;
+}
+
+section {
+	float: right;
+	width: 70%;
+	height: 90vh;
+	background-color: rgb(125, 250, 250);
+	text-align: center;
+	padding: 0.073% 0 0 0;
+}
+
+aside {
+	float: right;
+	width: 15%;
+	height: 300px;
+	background-color: white;
+	text-align: center;
+	padding: 0.073% 0 0 0;
+}
+
+footer {
+	clear: both;
+	width: 100%;
+	height: 100px;
+	background-color: black;
+	text-align: center;
+}
+
+.footerfont {
+	color: aliceblue;
+}
