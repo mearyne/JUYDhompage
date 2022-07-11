@@ -26,9 +26,17 @@
 
 	<section>
 		<div id="map"></div>
-		<div id="info">정보
-			<button></button>
-		
+		<div id="info">
+			<button id="shopInfo">가게</button>
+			<button id="favoriteInfo">찜가게</button>
+			<article>정보1</article>
+			<article>정보2</article>
+			<article>정보3</article>
+			<article>정보4</article>
+			<article>정보5</article>
+			<article>정보6</article>
+			<article>정보7</article>
+			<article>정보8</article>
 		</div>
 	</section>
 
