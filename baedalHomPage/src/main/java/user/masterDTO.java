@@ -4,7 +4,7 @@ public class masterDTO {
 	private int masterCode;
 	private int shopCode;
 	
-	private String masterId;
+	private String masterId; 
 	private String masterPw;
 	private String masterContact;
 	

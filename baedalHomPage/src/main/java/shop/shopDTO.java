@@ -14,7 +14,7 @@ public class shopDTO {
 	
 	public shopDTO(String shopName, String shopCategory, String shopAddress, String shopPic, String shopContact,
 			String shopContents, int shopCode, int masterCode, int shopStar, int reviewNum) {
-		
+		 
 		this.shopName = shopName;
 		this.shopCategory = shopCategory;
 		this.shopAddress = shopAddress;
