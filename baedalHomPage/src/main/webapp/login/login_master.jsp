@@ -1,18 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+	
 <!doctype HTML>
 <head>
 	<meta charset="UTF-8">
 	<title>네이버 로그인</title>
-	<link rel="stylesheet" href="style.css">
-	<script src="index.js"></script>
+
+	<script src="validation.js"></script>
 	<style>
-	
-@import
+	@import
 	url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap')
 	;
-
-* {
+	* {
 	margin: 0;
 	padding: 0;
 }
@@ -120,9 +119,10 @@ header {
 	justify-content: flex-start;
 	border-bottom: solid 1px;
 }
-
-
+	
 	</style>
+	
+
 </head>
 <body>
   <header>
@@ -131,8 +131,8 @@ header {
 	<div class="main-container">
 		<div class="main-wrap">
 		<div class="login-button">
-			<button>개인</button>
-			<button>사업자</button>
+			<button type="button" onclick="location.href='../login/login_user.jsp'">개인</button>
+			<button type="button" onclick="location.href='../login/login_master.jsp'">사업자</button>
 		</div>
 		<section class="login-input-section-wrap">
 			<div class="login-input-wrap">	
@@ -141,14 +141,16 @@ header {
 			<div class="login-input-wrap password-wrap">	
 				<input placeholder="Password" type="password"></input>
 			</div>
+			
 			<div class="login-button-wrap">
-				<button>로그인</button>
+				<button type="button" onclick="location.href='checkLoginVal(form)'">로그인</button>
 			</div>
 			<div class="login-button-wrap">
-				<button>회원가입</button>
+				<button type="button" onclick="location.href='../join/join_master.jsp'">회원가입</button>
 			</div>
 			
 		</section>
 		</div>
 	</div>
+	
 </body>

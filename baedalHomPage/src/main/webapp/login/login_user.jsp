@@ -131,8 +131,8 @@ header {
 	<div class="main-container">
 		<div class="main-wrap">
 		<div class="login-button">
-			<button>개인</button>
-			<button>사업자</button>
+			<button type="button" onclick="location.href='../login/login_user.jsp'">개인</button>
+			<button type="button" onclick="location.href='../login/login_master.jsp'">사업자</button>
 		</div>
 		<section class="login-input-section-wrap">
 			<div class="login-input-wrap">	
@@ -141,14 +141,16 @@ header {
 			<div class="login-input-wrap password-wrap">	
 				<input placeholder="Password" type="password"></input>
 			</div>
+			
 			<div class="login-button-wrap">
-				<button>로그인</button>
+				<button type="button" onclick="location.href='checkLoginVal(form)'">로그인</button>
 			</div>
 			<div class="login-button-wrap">
-				<button>회원가입</button>
+				<button type="button" onclick="location.href='../join/join_user.jsp'">회원가입</button>
 			</div>
 			
 		</section>
 		</div>
 	</div>
+	
 </body>
