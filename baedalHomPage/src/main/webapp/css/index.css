@@ -20,7 +20,9 @@ header {
 	height: 130px;
 	display: flex;
 	flex-direction: column;
+	margin: 5px;
 }
+
 
 .headerButton {
 	display: flex;
@@ -55,7 +57,8 @@ header {
 }
 
 section {
-	display: flex; float : right;
+	display: flex;
+	float: right;
 	width: 70%;
 	height: 90vh;
 	text-align: center;
@@ -69,7 +72,6 @@ aside {
 	height: 90vh;
 	background-color: white;
 	text-align: center;
-	padding: 0.073% 0 0 0;
 }
 
 footer {
@@ -95,25 +97,18 @@ div#info {
 	width: 40%;
 	justify-content: space-evenly;
 	align-content: flex-start;
-	
 	/* 일정 이상 글이 생길시 스크롤 생성*/
-	overflow:auto;
+	overflow: auto;
 }
 
-button#shopInfo {
+button#shopInfo, button#favoriteInfo {
 	width: 49%;
 	height: 10%;
 	border: solid 2px grey;
 	border-radius: 12px;
 }
 
-button#favoriteInfo {
-	width: 49%;
-	height: 10%;
-	border: solid 2px grey;
-	border-radius: 12px;
-}
-
+/*가게 정보가 들어갈 구역*/
 article {
 	width: 99%;
 	height: 20%;
@@ -123,3 +118,26 @@ article {
 	/* 여백 주기 */
 	margin: 1px
 }
+
+/* 스크롤바를 숨김 */
+body {
+	-ms-overflow-style: none;
+}
+::-webkit-scrollbar {
+	display: none;
+}
+
+/* 마우스를 올려놓았을때 색깔이 변함 */
+button:hover{
+      background-color: grey;
+      transition: 0.2s;
+}
+article:hover{
+      background-color: white;
+      transition: 0.2s;
+}
+
+.clicked{
+	 background-color: blue;
+}
+  

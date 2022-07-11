@@ -16,14 +16,15 @@
 	%>
 	<header>
 		<div class="headerButton">
-			<div class="mainButton" id="loginButton">로그인</div>
-			<div class="mainButton" id="mypageButton">마이페이지</div>
+			<!-- 로그인이 된다면 로그아웃으로 변경된다 -->
+			<button class="mainButton" id="loginButton">로그인</button> 
+			 <!-- 일반유저, 매니저에 따라서 마이페이지로 이동하는 곳이 달라진다 -->
+			<button class="mainButton" id="mypageButton">마이페이지</button>
 		</div>
-		<div class="logo">음식예약 사이트</div>
+	<div class="logo"><a href="./index">가게 예약 사이트</a></div>
 	</header>
 
 	<aside></aside>
-
 	<section>
 		<div id="map"></div>
 		<div id="info">
@@ -39,7 +40,6 @@
 			<article>정보8</article>
 		</div>
 	</section>
-
 	<aside></aside>
 
 	<footer>
