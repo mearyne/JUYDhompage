@@ -8,8 +8,6 @@ public class masterDTO {
 	private String masterPw;
 	private String masterContact;
 	
-	
-	
 	public masterDTO(int masterCode, int shopCode, String masterId, String masterPw, String masterContact) {
 		
 		this.masterCode = masterCode;

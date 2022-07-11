@@ -4,7 +4,7 @@ public class menuDTO {
 	private int menuCode;
 	private int shopCode;
 	private int menuPrice;
-	
+	 
 	private String menuName;  
 	private String menuPicture;
 	private String menuContents;
