@@ -46,7 +46,8 @@ public class userDAO {
 	public boolean checkUserLogin(String userId, String userPw) {
 		boolean check = false;
 		String sql = "SELECT * FROM user WHERE userId=? and userPw=?";
-
+		conn = DBManager.getConnection("booking");
+		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, userId);
