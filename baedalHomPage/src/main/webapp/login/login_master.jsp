@@ -146,7 +146,7 @@ header {
 				<button type="button" onclick="location.href='checkLoginVal(form)'">로그인</button>
 			</div>
 			<div class="login-button-wrap">
-				<button type="button" onclick="location.href='../join/join_master.jsp'">회원가입</button>
+				<button type="button" onclick="location.href='../join/join.jsp'">회원가입</button>
 			</div>
 			
 		</section>

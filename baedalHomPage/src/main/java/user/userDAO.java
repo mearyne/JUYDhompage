@@ -22,7 +22,7 @@ public class userDAO {
 	public boolean addUser() {
 
 		// 1.
-		String sql = "insert into user values(2,'2','3','4','5')"; // sql은 인덱스 1부터 시작
+		String sql = "insert into user values(?,?,?,?,?)"; // sql은 인덱스 1부터 시작
 		try {
 			conn = DBManager.getConnection("booking");
 			pstmt = conn.prepareStatement(sql);
@@ -43,4 +43,31 @@ public class userDAO {
 		}
 		return false;
 	}
+	
+
+	
+	public int login(String userId, String userPw) {
+		int check=-1; // 기본값으로 아이디가 없을때 반환
+		String sql = "SELECT * FROM user WHERE userId=?";
+		
+		try {
+			
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				if(rs.getString(1).equals(userPw)) {
+					check = 1; // 아이디와 비밀번호 일치
+				}else{
+					check = 0; // 비밀번호 불일치
+				}
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+			System.out.println("ERROR!");
+		}
+		return check;
+	}
 }
+

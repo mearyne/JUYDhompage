@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<title>네이버 로그인</title>
 	<link rel="stylesheet" href="style.css">
-	<script src="index.js"></script>
+	
 	<style>
 	
 @import
@@ -134,23 +134,24 @@ header {
 			<button type="button" onclick="location.href='../login/login_user.jsp'">개인</button>
 			<button type="button" onclick="location.href='../login/login_master.jsp'">사업자</button>
 		</div>
-		<section class="login-input-section-wrap">
-			<div class="login-input-wrap">	
-				<input placeholder="ID" type="text"></input>
-			</div>
-			<div class="login-input-wrap password-wrap">	
-				<input placeholder="Password" type="password"></input>
-			</div>
-			
-			<div class="login-button-wrap">
-				<button type="button" onclick="location.href='checkLoginVal(form)'">로그인</button>
-			</div>
-			<div class="login-button-wrap">
-				<button type="button" onclick="location.href='../join/join_user.jsp'">회원가입</button>
-			</div>
-			
-		</section>
+		<form action="../index" method="post">
+			<section class="login-input-section-wrap">
+				<div class="login-input-wrap">	
+					<input placeholder="ID" type="text" id="id"></input>
+				</div>
+				<div class="login-input-wrap password-wrap">	
+					<input placeholder="Password" type="password" id="pw"></input>
+				</div>
+				
+				<div class="login-button-wrap">
+					<input type="submit" value="로그인">
+				</div>
+				<div class="login-button-wrap">
+					<button type="button" onclick="location.href='../join/join_user.jsp'">회원가입</button>
+				</div>
+			</section>
+		</form>
 		</div>
 	</div>
-	
+	<script src="../js/login.js"></script>
 </body>
