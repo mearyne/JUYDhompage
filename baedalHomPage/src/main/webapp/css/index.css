@@ -23,7 +23,6 @@ header {
 	margin: 5px;
 }
 
-
 .headerButton {
 	display: flex;
 	justify-content: flex-end;
@@ -104,40 +103,76 @@ div#info {
 button#shopInfo, button#favoriteInfo {
 	width: 49%;
 	height: 10%;
-	border: solid 2px grey;
+	border: solid 2px gery;
 	border-radius: 12px;
 }
 
 /*가게 정보가 들어갈 구역*/
 article {
+	display: flex;
 	width: 99%;
 	height: 20%;
-	background-color: grey;
+	background-color: white;
 	border: solid 2px grey;
 	border-radius: 12px;
 	/* 여백 주기 */
-	margin: 1px
+	margin: 1px;
+	font-size: smaller;
 }
 
 /* 스크롤바를 숨김 */
 body {
 	-ms-overflow-style: none;
 }
+
 ::-webkit-scrollbar {
 	display: none;
 }
 
 /* 마우스를 올려놓았을때 색깔이 변함 */
-button:hover{
-      background-color: grey;
-      transition: 0.2s;
-}
-article:hover{
-      background-color: white;
-      transition: 0.2s;
+button:hover {
+	background-color: grey;
+	transition: 0.2s;
 }
 
-.clicked{
-	 background-color: blue;
+article:hover {
+	background-color: gery;
+	transition: 0.2s;
 }
-  
+
+.clicked {
+	background-color: blue;
+}
+
+/* 가게 정보 article를 꾸민다 */
+.articleBlock {
+	margin: 5px;
+	text-align: center;
+	width: 49%;
+}
+
+div.menu {
+	display: flex;
+}
+
+div.menu {
+	display: flex;
+	height: auto;
+}
+
+div.menuBlock {
+	width: 49%;
+}
+
+#articleList {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	height: 60vh;
+}
+
+img {
+	width: 100%;
+	height: 100%;
+}

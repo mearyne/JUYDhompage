@@ -19,9 +19,7 @@ public class userDAO {
 	private ResultSet rs = null;
 	private PreparedStatement pstmt = null;
 
-	public boolean addUser() {
-
-		// 1.
+	public boolean addUser() { // 유저를 데이터베이스에 추가한다
 		String sql = "insert into user values(?,?,?,?,?)"; // sql은 인덱스 1부터 시작
 		try {
 			conn = DBManager.getConnection("booking");
@@ -43,31 +41,30 @@ public class userDAO {
 		}
 		return false;
 	}
-	
 
-	
-	public int login(String userId, String userPw) {
-		int check=-1; // 기본값으로 아이디가 없을때 반환
-		String sql = "SELECT * FROM user WHERE userId=?";
-		
+	// MySQL에서 로그인 여부를 판단하는 메소드
+	public boolean checkUserLogin(String userId, String userPw) {
+		boolean check = false;
+		String sql = "SELECT * FROM user WHERE userId=? and userPw=?";
+
 		try {
-			
-			pstmt=conn.prepareStatement(sql);
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, userId);
-			rs = pstmt.executeQuery();
-			if(rs.next()) {
-				if(rs.getString(1).equals(userPw)) {
-					check = 1; // 아이디와 비밀번호 일치
-				}else{
-					check = 0; // 비밀번호 불일치
-				}
+			pstmt.setString(2, userPw);
+
+			check = pstmt.execute();
+			System.out.println("LOGIN CHECK SUCCESS!");
+
+			if (check) {
+				check = true; // 아이디와 비밀번호 일치
+			} else {
+				check = false; // 아이디와 비밀번호 불일치
 			}
-			
-		}catch(Exception e) {
+
+		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("ERROR!");
+			System.out.println("LOGIN ERROR!");
 		}
 		return check;
 	}
 }
-

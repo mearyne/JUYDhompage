@@ -49,7 +49,9 @@
 
                 <!-- PW2 -->
                 <div>
-                    <h3 class="join_title"><label for="pswd2">Reconfirm password</label></h3>
+                    <h3 class="join_title">
+                    <label for="pswd2">Reconfirm password</label>
+                    </h3>
                     <span class="box int_pass_check">
                         <input type="text" id="pswd2" class="int" maxlength="20">
                     </span>
@@ -68,7 +70,9 @@
              
                 <!-- EMAIL -->
                 <div>
-                    <h3 class="join_title"><label for="email">E-mail<span class="optional">(선택)</span></label></h3>
+                    <h3 class="join_title">
+                    	<label for="email">E-mail<span class="optional">(선택)</span></label>
+                    </h3>
                     <span class="box int_email">
                         <input type="text" id="email" class="int" maxlength="100" placeholder="선택입력">
                     </span>
@@ -80,7 +84,6 @@
                     <h3 class="join_title"><label for="phoneNo">Mobile</label></h3>
                     <span class="box int_mobile">
                         <input type="tel" id="mobile" class="int" maxlength="16" placeholder="전화번호 입력">
-                    
                     </span>
                     <span class="error_next_box"></span>    
                 </div>
