@@ -52,10 +52,12 @@ public class userDAO {
 			pstmt.setString(1, userId);
 			pstmt.setString(2, userPw);
 
-			int tmp = pstmt.executeUpdate();
+			rs = pstmt.executeQuery();
+			rs.next();
+			
 			System.out.println("LOGIN CHECK SUCCESS!");
 
-			if (tmp != 0) {
+			if (rs.getString(3).equals(userId) && rs.getString(4).equals(userPw)) {
 				check = true; // 아이디와 비밀번호 일치
 			} else {
 				check = false; // 아이디와 비밀번호 불일치

@@ -2,7 +2,7 @@
 <!doctype HTML>
 <head>
 <meta charset="UTF-8">
-<title>네이버 로그인</title>
+<title>로그인</title>
 <link rel="stylesheet" href="style.css">
 
 <style>
@@ -125,22 +125,31 @@ header {
 </style>
 </head>
 <body>
-	<header>
+  <header>
 		<div class="logo">음식예약 사이트</div>
 	</header>
 	<div class="main-container">
 		<div class="main-wrap">
-			<div class="login-button">
-				<button type="button" onclick="location.href='../login/login_user.jsp'">개인</button>
-				<button type="button" onclick="location.href='../login/login_master.jsp'">사업자</button>
+		<div class="login-button">
+			<button type="button" onclick="location.href='../login/login_user.jsp'">개인</button>
+			<button type="button" onclick="location.href='../login/login_master.jsp'">사업자</button>
+		</div>
+		<section class="login-input-section-wrap">
+			<div class="login-input-wrap">	
+				<input type="text" name="inputId"placeholder="ID" ></input>
 			</div>
-			<form action="./Service" method="post">
-				<input type="hidden" name="command" value="loginUser">
-				<input type="text" name="inputId" placeholder="ID"></input>
-				<input type="password" name="inputPw" placeholder="Password"></input>
-				<input type="submit" value="로그인">
-			</form>
+			<div class="login-input-wrap password-wrap">	
+				<input type="password" name="inputPw" placeholder="Password" ></input>
+			</div>
+			
+			<div class="login-button-wrap">
+				<button type="button">로그인</button>
+			</div>
+			<div class="login-button-wrap">
+				<button type="button" onclick="location.href='../join/join_user.jsp'">회원가입</button>
+			</div>
+		</section>
 		</div>
 	</div>
-	<script src="../js/login.js"></script>
+	
 </body>
