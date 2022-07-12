@@ -1,5 +1,7 @@
 package controller;
 
+import controller.action.JoinMasterAction;
+import controller.action.JoinUserAction;
 import controller.action.LoginMasterAction;
 import controller.action.LoginUserAction;
 
@@ -22,8 +24,8 @@ public class ActionFactory {
 		
 		if (command.equals("loginUser")) action = new LoginUserAction();
 		else if (command.equals("loginMaster")) action = new LoginMasterAction();
-		else if (command.equals("")) action = null;
-		else if (command.equals("")) action = null;
+		else if (command.equals("joinuser")) action = new JoinUserAction();
+		else if (command.equals("joinmaster")) action = new JoinMasterAction();
 		else if (command.equals("")) action = null;
 		else if (command.equals("")) action = null;
 		else if (command.equals("")) action = null;

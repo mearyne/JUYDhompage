@@ -5,6 +5,7 @@
     <head>
         <meta charset="UTF-8">
         <title>회원가입</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
         <link rel="stylesheet" href="../css/join.css">
    
     </head>
@@ -17,55 +18,57 @@
 		<div class="logo">음식예약 사이트</div>
 	</header>
 
+<form method="post" action="../Service" >
+        <input type="hidden" name="command" value="joinmaster">
+		<!-- wrapper -->
+		<div id="wrapper">
 
-        <!-- wrapper -->
-        <div id="wrapper">
+			<!-- content-->
+			<div id="content">
 
-            <!-- content-->
-            <div id="content">
+				<!-- ID -->
+				<div>
+					<h3 class="join_title">
+						<label for="id">ID</label>
+					</h3>
+					<span class="box int_id"> <input type="text" id="id"
+						name="id" class="int" maxlength="20"> <span
+						class="step_url"></span>
+					</span> <span class="error_next_box">필수 입력</span>
+				</div>
 
-                <!-- ID -->
-                <div>
-                    <h3 class="join_title">
-                        <label for="id">ID</label>
-                    </h3>
-                    <span class="box int_id">
-                        <input type="text" id="id" class="int" maxlength="20">
-                        <span class="step_url"></span>
-                    </span>
-                    <span class="error_next_box"></span>
-                </div>
+				<!-- PW1 -->
+				<div>
+					<h3 class="join_title">
+						<label for="pswd1">Password</label>
+					</h3>
+					<span class="box int_pass"> <input type="text" id="pswd1"
+						name="pw" class="int" maxlength="20"> <span id="alertTxt">사용불가</span>
+					</span> <span class="error_next_box">필수 입력</span>
+				</div>
 
-                <!-- PW1 -->
-                <div>
-                    <h3 class="join_title"><label for="pswd1">Password</label></h3>
-                    <span class="box int_pass">
-                        <input type="text" id="pswd1" class="int" maxlength="20">
-                        <span id="alertTxt">사용불가</span>
-                    </span>
-                    <span class="error_next_box"></span>
-                </div>
+				<!-- PW2 -->
+				<div>
+					<h3 class="join_title">
+						<label for="pswd2">Reconfirm password</label>
+					</h3>
+					<span class="box int_pass_check"> <input type="text"
+						id="pswd2" name="pw2" class="int" maxlength="20">
+					</span> <span class="error_next_box">필수 입력</span>
+				</div>
 
-                <!-- PW2 -->
-                <div>
-                    <h3 class="join_title"><label for="pswd2">Reconfirm password</label></h3>
-                    <span class="box int_pass_check">
-                        <input type="text" id="pswd2" class="int" maxlength="20">
-                    </span>
-                    <span class="error_next_box"></span>
-                </div>
+				<!-- NAME -->
+				<div>
+					<h3 class="join_title">
+						<label for="name">Name</label>
+					</h3>
+					<span class="box int_name"> <input type="text" id="name"
+						name="name" class="int" maxlength="20">
+					</span> <span class="error_next_box">필수 입력</span>
+				</div>
 
-                <!-- NAME -->
-                <div>
-                    <h3 class="join_title"><label for="name">Name</label></h3>
-                    <span class="box int_name">
-                        <input type="text" id="name" class="int" maxlength="20">
-                    </span>
-                    <span class="error_next_box"></span>
-                </div>
 
-             
-                <!-- EMAIL -->
+				<!-- 
                 <div>
                     <h3 class="join_title"><label for="email">E-mail<span class="optional">(선택)</span></label></h3>
                     <span class="box int_email">
@@ -73,16 +76,19 @@
                     </span>
                     <span class="error_next_box">이메일 주소를 다시 확인해주세요.</span>    
                 </div>
+                <!-- EMAIL -->
 
-                <!-- MOBILE -->
-                <div>
-                    <h3 class="join_title"><label for="phoneNo">Mobile</label></h3>
-                    <span class="box int_mobile">
-                        <input type="tel" id="mobile" class="int" maxlength="16" placeholder="전화번호 입력">
-                    
-                    </span>
-                    <span class="error_next_box"></span>    
-                </div>
+				<!-- MOBILE -->
+				<div>
+					<h3 class="join_title">
+						<label for="phoneNo">Mobile</label>
+					</h3>
+					<span class="box int_mobile"> <input type="tel" id="mobile"
+						name="mobile" class="int" maxlength="16" placeholder="전화번호 입력">
+
+					</span> <span class="error_next_box">필수 입력</span>
+				</div>
+
 
 				<!-- Address -->
 				  <div>
@@ -102,17 +108,19 @@
 
                 <!-- JOIN BTN-->
                 <div class="btn_area">
-                    <button type="button" id="btnJoin">
-                        <span>JOIN</span>
-                    </button>
+                  <input type="button" id="btnJoin" onclick="checkJoinVal(form)"
+						value="JOIN">
                 </div>
 
             </div> 
             <!-- content-->
 
         </div> 
+        </form>
+        
         <!-- wrapper -->
     <script src="index.js"></script>
+    <script src="../js/join.js"></script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
     //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
