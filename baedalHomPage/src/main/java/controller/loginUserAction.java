@@ -6,6 +6,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import user.userDAO;
 
 /**
  * Servlet implementation class loginAction
@@ -36,6 +39,31 @@ public class loginUserAction extends HttpServlet {
 		// true라면 로그인이 됨 -> (sesseion에 저장하기) -> index페이지로 이동시키기
 		// false라면 로그인 안됨 -> 다시 login페이지로 이동시키기
 	
+	userDAO dao = new userDAO();
+		
+		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");
+		
+		String id=request.getParameter("id");
+		String pw=request.getParameter("password");
+		
+		System.out.println("id" + id);
+		System.out.println("pw" + pw);
+		
+		boolean log =dao.checkUserLogin(id, pw);
+		
+		if(log==true) {
+			System.out.println("로그인됨");
+		}else {
+			System.out.println("로그인 실패");
+		}
+		
+		String url="";
+		
+		request.getRequestDispatcher(url).forward(request, response);
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("log", id);
 	}
 
 	/**

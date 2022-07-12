@@ -134,7 +134,7 @@ header {
 			<button type="button" onclick="location.href='../login/login_user.jsp'">개인</button>
 			<button type="button" onclick="location.href='../login/login_master.jsp'">사업자</button>
 		</div>
-		<form action="../index" method="post">
+		<form action="/indexUserAction" method="post">
 			<section class="login-input-section-wrap">
 				<div class="login-input-wrap">	
 					<input placeholder="ID" type="text" id="id"></input>

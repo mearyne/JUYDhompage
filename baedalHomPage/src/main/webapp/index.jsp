@@ -13,6 +13,8 @@
 <body>
 	<%
 	// 메인 페이지입니다.
+	String id = (String) session.getAttribute("id");
+	System.out.println(id);
 	%>
 	<header>
 		<div class="headerButton">
