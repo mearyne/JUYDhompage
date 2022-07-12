@@ -1,4 +1,4 @@
-package controller;
+package controller.action;
 
 // 로그인 상태일때 로그아웃을 눌렀을때 실행됩니다
 
@@ -13,13 +13,13 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class logoutAction
  */
 //@WebServlet("/logoutAction")
-public class logoutAction extends HttpServlet {
+public class LogoutAction extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public logoutAction() {
+    public LogoutAction() {
         super();
         // TODO Auto-generated constructor stub
     }

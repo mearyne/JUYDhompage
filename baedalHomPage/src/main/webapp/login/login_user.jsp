@@ -134,7 +134,8 @@ header {
 				<button type="button" onclick="location.href='../login/login_user.jsp'">개인</button>
 				<button type="button" onclick="location.href='../login/login_master.jsp'">사업자</button>
 			</div>
-			<form action="loginUserAction" method="post">
+			<form action="./Service" method="post">
+				<input type="hidden" name="command" value="loginUser">
 				<input type="text" name="inputId" placeholder="ID"></input>
 				<input type="password" name="inputPw" placeholder="Password"></input>
 				<input type="submit" value="로그인">

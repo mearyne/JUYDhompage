@@ -26,10 +26,10 @@ public class masterDAO {
 			pstmt.setString(1, masterId);
 			pstmt.setString(2, masterPw);
 
-			check = pstmt.execute();
+			int tmp = pstmt.executeUpdate();
 			System.out.println("LOGIN CHECK SUCCESS!");
 
-			if (check) {
+			if (tmp != 0) {
 				check = true; // 아이디와 비밀번호 일치
 			} else {
 				check = false; // 아이디와 비밀번호 불일치

@@ -136,19 +136,18 @@ header {
 		</div>
 		<section class="login-input-section-wrap">
 			<div class="login-input-wrap">	
-				<input placeholder="ID" type="text"></input>
+				<input type="text" name="inputId"placeholder="ID" ></input>
 			</div>
 			<div class="login-input-wrap password-wrap">	
-				<input placeholder="Password" type="password"></input>
+				<input type="password" name="inputPw" placeholder="Password" ></input>
 			</div>
 			
 			<div class="login-button-wrap">
-				<button type="button" onclick="location.href='checkLoginVal(form)'">로그인</button>
+				<button type="button">로그인</button>
 			</div>
 			<div class="login-button-wrap">
 				<button type="button" onclick="location.href='../join/join.jsp'">회원가입</button>
 			</div>
-			
 		</section>
 		</div>
 	</div>

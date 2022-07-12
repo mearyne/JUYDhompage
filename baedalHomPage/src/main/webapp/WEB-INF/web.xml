@@ -96,14 +96,6 @@
 		<url-pattern>/loginUser</url-pattern>
 	</servlet-mapping>
 
-	<servlet>
-		<servlet-name>loginUserAction</servlet-name>
-		<servlet-class>controller.loginUserAction</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>loginUserAction</servlet-name>
-		<url-pattern>/loginUserAction</url-pattern>
-	</servlet-mapping>
 
 
 
