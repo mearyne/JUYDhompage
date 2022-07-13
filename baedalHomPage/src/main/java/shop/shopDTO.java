@@ -1,33 +1,40 @@
 package shop;
 
 public class shopDTO {
+	private int shopCode;  
+	private int masterCode;
 	private String shopName;
 	private String shopCategory;
 	private String shopAddress;
 	private String shopPic;
-	private String shopContact;
+	private String shopPhone;
 	private String shopContents;
-	
-	private int shopCode;  
-	private int masterCode; 
 	private int shopStar;	
+	private int reviewNum;  
+
 	
-	public shopDTO(String shopName, String shopCategory, String shopAddress, String shopPic, String shopContact,
-			String shopContents, int shopCode, int masterCode, int shopStar, int reviewNum) {
-		 
+
+
+
+	public shopDTO(int shopCode, int masterCode, String shopName, String shopCategory, String shopAddress,
+			String shopPic, String shopPhone, String shopContents, int shopStar, int reviewNum) {
+		this.shopCode = shopCode;
+		this.masterCode = masterCode;
 		this.shopName = shopName;
 		this.shopCategory = shopCategory;
 		this.shopAddress = shopAddress;
 		this.shopPic = shopPic;
-		this.shopContact = shopContact;
+		this.shopPhone = shopPhone;
 		this.shopContents = shopContents;
-		this.shopCode = shopCode;
-		this.masterCode = masterCode;
 		this.shopStar = shopStar;
 		this.reviewNum = reviewNum;
 	}
-
-
+	public String getShopPhone() {
+		return shopPhone;
+	}
+	public void setShopPhone(String shopPhone) {
+		this.shopPhone = shopPhone;
+	}
 	public String getShopName() {
 		return shopName;
 	}
@@ -52,12 +59,7 @@ public class shopDTO {
 	public void setShopPic(String shopPic) {
 		this.shopPic = shopPic;
 	}
-	public String getShopContact() {
-		return shopContact;
-	}
-	public void setShopContact(String shopContact) {
-		this.shopContact = shopContact;
-	}
+	
 	public String getShopContents() {
 		return shopContents;
 	}
@@ -88,7 +90,7 @@ public class shopDTO {
 	public void setReviewNum(int reviewNum) {
 		this.reviewNum = reviewNum;
 	}
-	private int reviewNum;
+	
 	
 	
 
