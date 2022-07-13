@@ -1,3 +1,5 @@
+<%@page import="user.userDTO"%>
+<%@page import="user.userDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,6 +12,16 @@
 </head>
 <body>
     
+	<%	
+    	int code = 1;
+    	
+    	userDAO dao = userDAO.getInstance();
+    	userDTO dto = dao.getData(code);
+    	String name = dto.getUserName();
+    	String contact = dto.getUserContact();
+    	String id = dto.getUserId();
+    	
+    %>
 	<header>
 		<div class="headerButton">
 			<div class="mainButton" id="loginButton">로그인</div>
@@ -19,7 +31,7 @@
 	</header>
 
 	<aside>
-		<h2>사이드바</h2>
+		
 	</aside>
 
 	<section class="mypage">
@@ -30,9 +42,9 @@
            <a class="userpage" id="reviewlist" href="review">리뷰 목록</a>
         </div>
         <div class="pagedetail"> 
-			<a class="mydetail" id="id">아이디 : 나의 아이디</a>
-			<a class="mydetail" id="name">이름 : 나의 이름</a>
-			<a class="mydetail" id="contact">전화 번호 : 나의 핸드폰</a>
+			<a class="mydetail" id="id">아이디 :<%=id %></a>
+			<a class="mydetail" id="name">이름 : <%=name %></a>
+			<a class="mydetail" id="contact">전화 번호 : <%=contact %></a>
 			<form method="post" action="">
 				<input type="submit" value="비밀번호 변경" class="mydetail" id="changpw" >
 
@@ -42,7 +54,7 @@
 	</section>
 
 	<aside>
-		<h2>사이드바</h2>
+		
 	</aside>
 
 	<footer>

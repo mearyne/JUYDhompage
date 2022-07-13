@@ -22,8 +22,6 @@ public class ActionFactory {
 		
 		if (command.equals("loginUser")) action = new LoginUserAction();
 		else if (command.equals("loginMaster")) action = new LoginMasterAction();
-		else if (command.equals("joinUser")) action = null;
-		else if (command.equals("")) action = null;
 		else if (command.equals("")) action = null;
 		else if (command.equals("")) action = null;
 		else if (command.equals("")) action = null;
