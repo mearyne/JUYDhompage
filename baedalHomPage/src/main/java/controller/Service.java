@@ -38,13 +38,12 @@ public class Service extends HttpServlet {
 		// 액션 팩토리를 (팩토리 패턴) 만들어서
 		// 액션 인스턴스를 반환 받음
 
-		// view page에서 hidden으로 넘겨준 parameter (command)를 가져와서,
 		String command = request.getParameter("command");
-		ActionFactory actionFactory = ActionFactory.getInstance();
+		ActionFactory actionFactory = ActionFactory.getInstance(); 
 		Action action = actionFactory.getAction(command);
 
 		if (action != null) {
-			action.execute(request, response);
+			action.execute(request, response); // 실제로 join이 작동됨
 		}
 
 	}

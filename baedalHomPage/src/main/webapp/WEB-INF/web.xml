@@ -96,7 +96,33 @@
 		<url-pattern>/loginUser</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>loginMaster</servlet-name>
+		<jsp-file>/login/login_master.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>loginMaster</servlet-name>
+		<url-pattern>/loginMaster</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>joinUser</servlet-name>
+		<jsp-file>/join/join_user.jsp</jsp-file>
+	</servlet>
 
+	<servlet-mapping>
+		<servlet-name>joinUser</servlet-name>
+		<url-pattern>/joinUser</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>joinMaster</servlet-name>
+		<jsp-file>/join/join_master.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>joinMaster</servlet-name>
+		<url-pattern>/joinMaster</url-pattern>
+	</servlet-mapping>
 
 
 </web-app>

@@ -1,3 +1,13 @@
+function checkJoinVal(form){
+    for(let i=0; i<req.length; i++){
+        if(req.get(i).value === "")
+            warning.show();
+		else {
+			form.submit();
+		}
+    }
+}
+
 /* 메인 페이지에 대한 javascript입니다 */
 
 // map을 불러오는 스크립트

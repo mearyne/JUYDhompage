@@ -19,7 +19,7 @@
 	<header>
 		<div class="headerButton">
 			<!-- 로그인이 된다면 로그아웃으로 변경된다 -->
-			<button class="mainButton" id="loginButton">로그인</button>
+			<button class="mainButton" id="loginButton" onclick="location.href=`loginUser`">로그인</button>
 			<!-- 일반유저, 매니저에 따라서 마이페이지로 이동하는 곳이 달라진다 -->
 			<button class="mainButton" id="mypageButton">마이페이지</button>
 		</div>
@@ -65,7 +65,8 @@
 						</div>
 						<!-- </div> -->
 					</div>
-				</article><article>
+				</article>
+				<article>
 					<!--가게 정보에서 왼쪽 박스-->
 					<div class="articleBlock" id="subArticle1">
 						<!--가게 사진이 들어올 곳입니다-->

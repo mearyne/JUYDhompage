@@ -16,13 +16,13 @@ public class ActionFactory {
 	public static ActionFactory getInstance() {
 		return instance;
 	}
-	
+
 	public Action getAction(String command) {
 		Action action = null;
 		
 		if (command.equals("loginUser")) action = new LoginUserAction();
 		else if (command.equals("loginMaster")) action = new LoginMasterAction();
-		else if (command.equals("")) action = null;
+		else if (command.equals("joinUser")) action = null;
 		else if (command.equals("")) action = null;
 		else if (command.equals("")) action = null;
 		else if (command.equals("")) action = null;

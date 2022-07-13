@@ -131,16 +131,27 @@ header {
 	<div class="main-container">
 		<div class="main-wrap">
 			<div class="login-button">
-				<button type="button" onclick="location.href='../login/login_user.jsp'">개인</button>
-				<button type="button" onclick="location.href='../login/login_master.jsp'">사업자</button>
+				<button type="button" style="background-color: blue;" onclick="location.href='./loginUser'">개인</button>
+				<button type="button" onclick="location.href='loginMaster'">사업자</button>
 			</div>
-			<form action="./Service" method="post">
-				<input type="hidden" name="command" value="loginUser">
-				<input type="text" name="inputId" placeholder="ID"></input>
-				<input type="password" name="inputPw" placeholder="Password"></input>
-				<input type="submit" value="로그인">
-			</form>
+			<section class="login-input-section-wrap">
+				<form action="./Service" method="post">
+					<input type="hidden" name="command" value="loginUser">
+					<div class="login-input-wrap">
+						<input type="text" name="inputId" placeholder="ID"></input>
+					</div>
+					<div class="login-input-wrap password-wrap">
+						<input type="password" name="inputPw" placeholder="Password"></input>
+					</div>
+					<div class="login-button-wrap">
+						<input type="submit" value="로그인" style="width: 465px; height: 48px; font-size: 18px; background: black; color: white; border: solid 1px;">
+					</div>
+				</form>
+				<div class="login-button-wrap">
+					<button type="button" onclick="location.href='../join/join.jsp'">회원가입</button>
+				</div>
+			</section>
 		</div>
 	</div>
-	<script src="../js/login.js"></script>
+
 </body>
