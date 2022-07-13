@@ -6,7 +6,7 @@
         <meta charset="UTF-8">
         <title>회원가입</title>
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-<link rel="stylesheet" href="../css/join.css">
+<link rel="stylesheet" href="./css/join.css">
 
 </head>
 <body>
@@ -16,7 +16,7 @@
 		<div class="logo">음식예약 사이트</div>
 	</header>
 
-	<form method="post" action="../Service" >
+	<form method="post" action="./Service" >
 	<input type="hidden" name="command" value="joinuser">
 		<!-- wrapper -->
 		<div id="wrapper">
@@ -97,7 +97,7 @@
 
 		</div>
 	</form>
-	<script src="../js/join.js"></script>
+	<script src="./js/join.js"></script>
     </body>
     
 </html>

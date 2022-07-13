@@ -24,16 +24,18 @@ public class masterDAO {
 	public boolean checkMasterLogin(String masterId, String masterPw) {
 		boolean check = false; // 기본값으로 아이디가 없을때 반환
 		String sql = "SELECT * FROM master WHERE masterId=? and masterPw=?";
-
+		conn = DBManager.getConnection("booking");
+		
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, masterId);
 			pstmt.setString(2, masterPw);
 
-			int tmp = pstmt.executeUpdate();
+			rs = pstmt.executeQuery();
+			rs.next();
 			System.out.println("LOGIN CHECK SUCCESS!");
 
-			if (tmp != 0) {
+			if (rs.getInt(1) > 0) {
 				check = true; // 아이디와 비밀번호 일치
 			} else {
 				check = false; // 아이디와 비밀번호 불일치

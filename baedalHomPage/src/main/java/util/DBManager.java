@@ -10,13 +10,13 @@ public class DBManager {
 	public static Connection getConnection(String database) {
 		Connection conn = null;
 
-		String url = "jdbc:mysql://localhost:3306/";
-		String user = "root";
-		String password = "root";
+		String url = String.format("jdbc:mysql://database-1.ce8f4awp9h7c.us-west-1.rds.amazonaws.com:3306/%s?serverTimezone=UTC",database);
+		String user = "admin";
+		String password = "1^QLkWd6s9i4";
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			conn = DriverManager.getConnection(url + database, user, password);
+			conn = DriverManager.getConnection(url, user, password);
 			System.out.println("DB연동 성공");
 			return conn;
 		} catch (Exception e) {

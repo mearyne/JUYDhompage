@@ -22,6 +22,7 @@ public class JoinUserAction implements Action {
 		response.setCharacterEncoding("UTF-8");
 		
 		int code = dao.chkCode();
+		if(code !=-1) {
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 		String name =request.getParameter("name");
@@ -36,6 +37,8 @@ public class JoinUserAction implements Action {
 			url="join_user.jsp";
 		}
 		response.sendRedirect(url);
+		}else
+			System.out.println("중복코드");
 	}
 	
 
