@@ -1,3 +1,5 @@
+<%@page import="user.userDTO"%>
+<%@page import="favorite.favoriteDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -9,7 +11,13 @@
 <title>favoriteShop list</title>
 </head>
 <body>
-
+	<%
+		String userCode = (String) session.getAttribute("logCode");
+		userCode = userCode.substring(1);
+		int code = Integer.parseInt(userCode);
+		
+		favoriteDAO dao = favoriteDAO.getInstance();
+	%>
 	<%
 	// 찜목록 가게입니다		
 	%>

@@ -19,8 +19,9 @@ public class userDAO {
 	private Connection conn = null;
 	private ResultSet rs = null;
 	private PreparedStatement pstmt = null;
-
-	public boolean addUser(userDTO user) { // 유저를 데이터베이스에 추가한다
+	
+	// 유저를 데이터베이스에 추가한다
+	public boolean addUser(userDTO user) { 
 		String sql = "insert into user values(?,?,?,?,?)"; // sql은 인덱스 1부터 시작
 		try {
 			conn = DBManager.getConnection("booking");
@@ -49,8 +50,8 @@ public class userDAO {
 
 
 	// MySQL에서 로그인 여부를 판단하는 메소드
-	public boolean checkUserLogin(String userId, String userPw) {
-		boolean check = false;
+	public int checkUserLogin(String userId, String userPw) {
+		int check = -1;
 		String sql = "SELECT * FROM user WHERE userId=? and userPw=?";
 		conn = DBManager.getConnection("booking");
 
@@ -65,9 +66,10 @@ public class userDAO {
 			System.out.println("LOGIN CHECK SUCCESS!");
 
 			if (rs.getString(3).equals(userId) && rs.getString(4).equals(userPw)) {
-				check = true; // 아이디와 비밀번호 일치
+				check = rs.getInt(1); // 아이디와 비밀번호 일치
+				
 			} else {
-				check = false; // 아이디와 비밀번호 불일치
+				check = -1; // 아이디와 비밀번호 불일치
 			}
 
 		} catch (Exception e) {
@@ -77,8 +79,8 @@ public class userDAO {
 		return check;
 	}
 	
-	
-	public userDTO getData(int code) { // 마이페이지 현재 로그인한 유저의 정보를 가져오기
+	// 마이페이지 현재 로그인한 유저의 정보를 가져오기
+	public userDTO getData(int code) { 
 		String sql ="select * from user where userCode =?";
 		try {
 			conn = DBManager.getConnection("booking");
@@ -114,7 +116,8 @@ public class userDAO {
 		return null;
 	}
 	
-	public int chkCode() { // 랜덤 4자리코드를 생성하고 중복확인하는 메소드
+	// 랜덤 4자리코드를 생성하고 중복확인하는 메소드
+	public int chkCode() { 
 		Random ran=new Random();
 		int ranNum=ran.nextInt(899)+1000;
 		System.out.println(ranNum);
@@ -142,6 +145,28 @@ public class userDAO {
 		return -1;
 	}
 	
+	public boolean updatePw(String code,String pw,String chPw,String doubleChkPw) { 
+		//현재 비밀번호와 바꿀 비밀번호를 비교하고 일치하지 않으면 바꿀 비밀번호를 두번 입력받아서 비밀번호 변경
+		if(!pw.equals(chPw)) {
+			if(chPw.equals(doubleChkPw)) {
+				try {
+					String sql = "UPDATE user SET userPw=? where userCode=?;";
+					conn = DBManager.getConnection("booking");
+					pstmt = conn.prepareStatement(sql);		
+					pstmt.setString(1, chPw);
+					pstmt.setInt(2, Integer.parseInt(code));
+					
+					int temp = pstmt.executeUpdate(); 
+					System.out.println(temp);
+					return true;
+				} catch (Exception e) {
+					// TODO: handle exception
+					e.printStackTrace();
+				}
+			}
+		}
+		return false;
+	}
 }
 
 

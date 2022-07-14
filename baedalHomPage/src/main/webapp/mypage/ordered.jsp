@@ -13,17 +13,8 @@
 	<%
 	// 유저가 주문했던 목록을 보여주는 페이지입니다
 	%>
-	<header>
-		<div class="headerButton">
-			<div class="mainButton" id="loginButton">로그인</div>
-			<div class="mainButton" id="mypageButton">마이페이지</div>
-		</div>
-		<div class="logo">음식예약 사이트</div>
-	</header>
-
-	<aside>
-		<h2>사이드바</h2>
-	</aside>
+	<jsp:include page="/header"></jsp:include>
+	<aside></aside>
 
 	<section class="mypage">
 		<div class="pagelist">
@@ -42,15 +33,8 @@
         </div>
 	</section>
 
-	<aside>
-		<h2>사이드바</h2>
-	</aside>
-
-	<footer>
-		<p class="footerfont">
-			정의형 이정목 송윤주 우다영 <br> 이건 footer
-		</p>
-	</footer>
+	<aside></aside>
+	<jsp:include page="/footer"></jsp:include>
 
 </body>
 </html>

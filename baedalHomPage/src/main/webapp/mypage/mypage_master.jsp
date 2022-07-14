@@ -1,35 +1,33 @@
-<%@page import="user.userDTO"%>
-<%@page import="user.userDAO"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page import="user.masterDTO"%>
+<%@page import="user.masterDAO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/mypage.css">
+    <link rel="stylesheet" href="./css/mypage_master.css">
     <title>mypage</title>
 </head>
 <body>
     
 	<%	
-	
 		// 세션에 올라와있는 로그인된 유저코드
-		String tmpUser = (String) session.getAttribute("logCode");
-		tmpUser = tmpUser.substring(1);
-	   	int userCode = Integer.parseInt(tmpUser);
-	   	
-	   	// 확인용
-	   	System.out.println(userCode);
-    	
-    	userDAO dao = userDAO.getInstance();
+		String masterCode = (String) session.getAttribute("logCode");
+		masterCode = masterCode.substring(1);
+		
+	   	int masterCodeInteger = Integer.parseInt(masterCode);
+    		
+    	masterDAO dao = masterDAO.getInstance();
     	// dto = 유저데이터
-		userDTO dto = dao.getData(userCode);
-    	
+    	masterDTO dto = dao.getData(masterCodeInteger);
+    			
     	// dto를 이용해서 데이터를 뽑아냈다
-    	String name = dto.getUserName();
-    	String id = dto.getUserId();
-    	String contact = dto.getUserContact();
+    	String id = dto.getMasterId();
+    	String name = dto.getMasterName();
+    	String contact =dto.getMasterContact();
     	
     %>
 	<jsp:include page="/header"></jsp:include>
@@ -44,11 +42,11 @@
         </div>
         <div class="pagedetail"> 
 			<a class="mydetail" id="id">아이디 :<%=id %></a>
-			<a class="mydetail" id="name">이름 : <%=name %></a>
+			<a class="mydetail" id="name">이름 :<%= name %></a>
 			<a class="mydetail" id="contact">전화 번호 : <%=contact %></a>
 			
-			<form method="post" action="./mypage/changePw.jsp">
-				<input type="submit" value="비밀번호 변경" class="mydetail" id="changePw" >
+			<form method="post" action="">
+				<input type="submit" value="비밀번호 변경" class="mydetail" id="changpw" >
 			</form>
 			
         </div>

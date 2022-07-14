@@ -1,11 +1,12 @@
-function checkJoinVal(form){
-    for(let i=0; i<req.length; i++){
-        if(req.get(i).value === "")
-            warning.show();
+function checkJoinVal(form) {
+	const req = $(".req");
+	for (let i = 0; i < req.length; i++) {
+		if (req.get(i).value === "")
+			warning.show();
 		else {
 			form.submit();
 		}
-    }
+	}
 }
 
 /* 메인 페이지에 대한 javascript입니다 */
@@ -70,9 +71,9 @@ kakao.maps.event.addListener(marker, 'click', function() {
 
 function addShopInfoInSection() {
 	const contents = `<article>
-					<div class="articleBlock" id="subArticle1">
-						<div id="menuPicture1">가게사진이 들어올 자리</div>
-					</div>
+				<div class="articleBlock" id="subArticle1">
+					<div id="menuPicture1">가게사진이 들어올 자리</div>
+				</div>
 					<div class="articleBlock" id="subArticle2">
 						<div id="menuPicture2">
 							<div id="shopName">[가게 이름]</div>
@@ -101,3 +102,20 @@ function addShopInfoInSection() {
 	sectionSelector.innerHTML = contents + sectionSelector.innerHTML;
 
 }
+
+
+function goToMyPage(logCode) {
+	let code = String(logCode);
+	if (code.charAt(0) === '-') {
+		// 로그인이 안된 상태
+		alert("로그인을 해주세요");
+	} else if (code.charAt(0) === 'u') {
+		// user로 로그인 된 상태라면 마이페이지로 이동시킨다
+		location.href = "./myPage";
+	} else if (code.charAt(0) === 'm') {
+		// master로 로그인 된 상태라면 master마이페이지로 이동시킨다
+		location.href="./mypage_master";		
+	}
+
+
+}

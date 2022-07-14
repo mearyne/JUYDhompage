@@ -104,7 +104,7 @@
 		<servlet-name>loginMaster</servlet-name>
 		<url-pattern>/loginMaster</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>joinUser</servlet-name>
 		<jsp-file>/join/join_user.jsp</jsp-file>
@@ -123,6 +123,61 @@
 		<servlet-name>joinMaster</servlet-name>
 		<url-pattern>/joinMaster</url-pattern>
 	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>myPage</servlet-name>
+		<jsp-file>/mypage/mypage.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>myPage</servlet-name>
+		<url-pattern>/myPage</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>agree</servlet-name>
+		<jsp-file>/agree/agree.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>agree</servlet-name>
+		<url-pattern>/agree</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>header</servlet-name>
+		<jsp-file>/module/header.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>header</servlet-name>
+		<url-pattern>/header</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>headerNobutton</servlet-name>
+		<jsp-file>/module/headerNobutton.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>headerNobutton</servlet-name>
+		<url-pattern>/headerNobutton</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>footer</servlet-name>
+		<jsp-file>/module/footer.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>footer</servlet-name>
+		<url-pattern>/footer</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>mypage_master</servlet-name>
+		<jsp-file>/mypage/mypage_master.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>mypage_master</servlet-name>
+		<url-pattern>/mypage_master</url-pattern>
+	</servlet-mapping>
+	
 
 
 </web-app>

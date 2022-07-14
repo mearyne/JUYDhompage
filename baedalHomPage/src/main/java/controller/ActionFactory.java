@@ -1,9 +1,11 @@
 package controller;
 
+import controller.action.ChangePwAction;
 import controller.action.JoinMasterAction;
 import controller.action.JoinUserAction;
 import controller.action.LoginMasterAction;
 import controller.action.LoginUserAction;
+import controller.action.logOutAction;
 
 public class ActionFactory {
 	
@@ -26,7 +28,8 @@ public class ActionFactory {
 		else if (command.equals("loginMaster")) action = new LoginMasterAction();
 		else if (command.equals("joinuser")) action = new JoinUserAction();
 		else if (command.equals("joinmaster")) action = new JoinMasterAction();
-		else if (command.equals("")) action = null;
+		else if (command.equals("logOut")) action = new logOutAction();
+		else if (command.equals("changePwAction")) action = new ChangePwAction();
 		
 		return action;
 	}

@@ -126,17 +126,20 @@ a.userpage{
 
 input[type="submit"]:hover, select:hover {
     background-color: grey;
-	width: AUTO;
-}
-input[type="button"][type="submit"] {
-    width: 50px;
-	background-color: aquamarine;
+	width: 465px;
+    height: 48px;
+    font-size: 20px;
+    color: white;
+    border: solid 1px;
 }
 
  input, select {
-   background-color: ghostwhite;
-    margin: 10px;
-    border: solid 1px lightblue;
+   width: 465px;
+    height: 48px;
+    font-size: 18px;
+    background: black;
+    color: white;
+    border: solid 1px;
 }
 
 input[type="text"] {
