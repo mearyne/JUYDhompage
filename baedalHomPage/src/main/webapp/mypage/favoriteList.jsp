@@ -1,3 +1,7 @@
+<%@page import="shop.shopDTO"%>
+<%@page import="favorite.favoriteDTO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="shop.shopDAO"%>
 <%@page import="user.userDTO"%>
 <%@page import="favorite.favoriteDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -12,26 +16,22 @@
 </head>
 <body>
 	<%
-		String userCode = (String) session.getAttribute("logCode");
-		userCode = userCode.substring(1);
-		int code = Integer.parseInt(userCode);
+	String userCode = (String) session.getAttribute("logCode");
+	userCode = userCode.substring(1);
+	int code = Integer.parseInt(userCode);
 		
-		favoriteDAO dao = favoriteDAO.getInstance();
+		//int code = 1;
+		
+		favoriteDAO fdao = favoriteDAO.getInstance();
+		shopDAO sdao= shopDAO.getInstance();
+		
+		ArrayList<favoriteDTO> favdata = fdao.getuserfavorite(code);
 	%>
 	<%
 	// 찜목록 가게입니다		
 	%>
-	<header>
-		<div class="headerButton">
-			<div class="mainButton" id="loginButton">로그인</div>
-			<div class="mainButton" id="mypageButton">마이페이지</div>
-		</div>
-		<div class="logo">음식예약 사이트</div>
-	</header>
-
-	<aside>
-		<h2>사이드바</h2>
-	</aside>
+	<jsp:include page="/header"></jsp:include>
+	<aside></aside>
 
 	<section class="mypage">
 		<div class="pagelist">
@@ -41,23 +41,31 @@
            <a class="userpage" id="reviewlist" href="review">리뷰 목록</a>
         </div>
           <div class="pagedetail"> 
-			<article>정보1</article>
-			<article>정보2</article>
-			<article>정보3</article>
-			<article>정보4</article>
-			<article>정보5</article>
+          <%for(int i=0; i<favdata.size(); i++){
+        	  favoriteDTO fav = favdata.get(i);
+        	  shopDTO shop = sdao.getshopData(fav.getShopCode());
+        	  
+        	  String shopname = shop.getShopName();
+        	  String shopadd = shop.getShopAddress();
+        	  String shopcategory = shop.getShopCategory();
+        	  String shopcontact = shop.getShopPhone();        	  
+        	  %>
+			<article id="favorite<%=i+1%>">
+			<div id="shopname"><%=shopname %></div>
+			<div id="shopadd"><%=shopadd %></div>
+			<div id="shopcategory"><%=shopcategory %></div>
+			<div id="shopcontact"><%=shopcontact %></div>
+			
+			
+			</article>
+          <% 
+          }
+          %>
         </div>
 	</section>
 
-	<aside>
-		<h2>사이드바</h2>
-	</aside>
-
-	<footer>
-		<p class="footerfont">
-			정의형 이정목 송윤주 우다영 <br> 이건 footer
-		</p>
-	</footer>
-
+	<aside></aside>
+	<jsp:include page="/footer"></jsp:include>
+	
 </body>
 </html>

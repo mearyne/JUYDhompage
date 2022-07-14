@@ -42,9 +42,11 @@ public class shopDAO {
 				String shopContents = rs.getString(8);
 				int shopStar = rs.getInt(9);
 				int reviewNum = rs.getInt(10);
+				double shopX = rs.getDouble(11);
+				double shopY = rs.getDouble(12);
 
 				shopDTO dto = new shopDTO(shopCode, masterCode, shopName, shopCategory, shopAddress, shopPic, shopPhone,
-						shopContents, shopStar, reviewNum);
+						shopContents, shopStar, reviewNum, shopX, shopY);
 
 				return dto;
 			}
@@ -52,7 +54,6 @@ public class shopDAO {
 			System.out.println("성공");
 
 		} catch (Exception e) {
-			// TODO: handle exception
 			System.out.println("실패");
 			e.printStackTrace();
 
@@ -78,8 +79,13 @@ public class shopDAO {
 				String shopCategory = rs.getString(4);
 				String shopPic = rs.getString(6);
 				int shopStar = rs.getInt(9);
-
-				shopDTO shop = new shopDTO(shopCode, shopName, shopCategory, shopPic, shopStar);
+				double shopX = rs.getDouble(11);
+				double shopY = rs.getDouble(12);
+				
+				System.out.println(shopX);
+				System.out.println(shopY);
+				
+				shopDTO shop = new shopDTO(shopCode, shopName, shopCategory, shopPic, shopStar, shopX, shopY);
 				
 				shopArr.add(shop);
 			}

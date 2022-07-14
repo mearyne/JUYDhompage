@@ -126,11 +126,15 @@ header {
 	position: relative;
 	display: block;
 	width: 100%;
-	padding-left: 29px;
 	font-size: 14px;
 	font-weight: 700;
 	line-height: 21px;
 	cursor: pointer;
 	color: #333;
 	box-sizing: border-box;
+}
+.warning {
+    display: none;
+    color: red;
+    font-size: 0.8em;
 }

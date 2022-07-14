@@ -22,9 +22,12 @@ public class ChangePwAction implements Action{
 		response.setCharacterEncoding("UTF-8");
 		
 		HttpSession session = request.getSession();
+		String tmp = (String) session.getAttribute("logCode");
+		tmp = tmp.substring(1);
+		int userCode = Integer.parseInt(tmp);
 		
-//		int userCode = Integer.parseInt((String) request.getAttribute("userCode")); // 유저코드
-		int userCode = 1239; // 유저코드
+		System.out.println("userCode:::::::" + userCode);
+		
 		System.out.println(userCode);
 		userDAO dao = userDAO.getInstance();
 		userDTO user = dao.getData(userCode);
@@ -42,15 +45,14 @@ public class ChangePwAction implements Action{
 		System.out.println("userCode"+userCode);
 		
 		String url ="";
-		String uCode=String.valueOf(userCode);
+//		String uCode=String.valueOf(userCode);
 		
-		if(dao.updatePw(uCode,pw,chPw,doubleChkPw)) {
+		if(dao.updatePw(userCode,pw,chPw,doubleChkPw)) {
 			url="mypage";
-		}else {
-			url="index.jsp";
 		}
-
-
+		else {
+			url="index";
+		}
 		response.sendRedirect(url);
 		
 	}

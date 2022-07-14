@@ -1,5 +1,6 @@
 package controller;
 
+import controller.action.AddFavoriteAction;
 import controller.action.ChangePwAction;
 import controller.action.JoinMasterAction;
 import controller.action.JoinUserAction;
@@ -30,6 +31,7 @@ public class ActionFactory {
 		else if (command.equals("joinmaster")) action = new JoinMasterAction();
 		else if (command.equals("logOut")) action = new logOutAction();
 		else if (command.equals("changePwAction")) action = new ChangePwAction();
+		else if (command.equals("addfavo")) action = new AddFavoriteAction();
 		
 		return action;
 	}

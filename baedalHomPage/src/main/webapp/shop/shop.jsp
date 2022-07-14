@@ -115,7 +115,16 @@
 	menuDAO menudao = menuDAO.getInstance();
 	reviewDAO reviewdao= reviewDAO.getInstance();
 	
+	
+	int userCode =-1;
+	String user= (String)session.getAttribute("logCode");
+	System.out.println("userCode :"+user);
+	if(user!=null){
+	user=user.substring(1);
+	userCode = Integer.parseInt(user);
+	} 
 
+	
 	// 모든 메뉴, 리뷰의 정보를 가져옴
 	ArrayList<menuDTO> menuInfo = menudao.menuInfo(shopCode);
 	ArrayList<reviewDTO> reviewdto = reviewdao.getshop(shopCode);
@@ -124,6 +133,10 @@
 	<jsp:include page="/module/header.jsp"></jsp:include>
 	<aside></aside>
 	<section>
+	<form action="./Service" method="post" >
+	<input type="hidden" name="command" value="addfavo">
+	<input type="hidden" value="<%=userCode %>" name="usercode">
+	<input type="hidden" value="<%=shopCode %>" name="shopcode">
 		<div id="top">
 			<div id="shopPic"> <img id="shopPicture" src="<%=shopInfo.getShopPic()%>" ></div>
 			<div id="shopInfo">
@@ -134,10 +147,12 @@
 				<div><h3>별점 : <%=shopInfo.getShopStar() %>점</h3></div>
 				<div><h3>리뷰 숫자 : <%=shopInfo.getReviewNum() %>개</h3></div>
 				<br> <button class="buttonMenu">예약하기</button><br>
-				<button class="buttonMenu">찜하기</button>
+				
+				<input type="submit" value="찜하기">
 			
 			</div>
 		</div>
+	</form>
 		<div id="bottom">
 			<div>
 				<hr><br>

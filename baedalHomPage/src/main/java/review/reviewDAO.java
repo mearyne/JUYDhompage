@@ -52,5 +52,39 @@ public class reviewDAO {
 		}		
 		return null;
 	}
+	
+
+	public ArrayList<reviewDTO> getuser(int code) {
+		String sql ="select * from review where userCode =?";
+		ArrayList<reviewDTO> reviewD =new ArrayList<>();
+		try {
+			conn = DBManager.getConnection("booking");
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, code);
+			rs=pstmt.executeQuery();
+			System.out.println(rs);
+			
+			while(rs.next()) {
+				
+			int reviewCode = rs.getInt(1);
+			int shopCode = rs.getInt(2);
+			int userCode = rs.getInt(3);
+			int orderCode = rs.getInt(4);
+			int reviewStar = rs.getInt(5);
+			String reviewContents = rs.getString(6);
+			String reviewPic = rs.getString(7);
+			
+			reviewDTO dto = new reviewDTO(reviewCode, shopCode, userCode, orderCode, reviewStar, reviewContents, reviewPic);
+			reviewD.add(dto);
+			}
+			System.out.println("성공");
+			return reviewD;
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("실패");
+			e.printStackTrace();
+		}		
+		return null;
+	}
 
 }

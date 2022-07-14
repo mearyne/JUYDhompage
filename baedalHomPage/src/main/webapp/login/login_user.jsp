@@ -7,6 +7,7 @@
 </head>
 <body>
 	<jsp:include page="/headerNobutton"></jsp:include>
+	
 	<div class="main-container">
 		<div class="main-wrap">
 			<div class="login-button">

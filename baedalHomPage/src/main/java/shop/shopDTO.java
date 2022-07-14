@@ -12,13 +12,36 @@ public class shopDTO {
 	private int shopStar;
 	private int reviewNum;
 
-	public shopDTO(int shopCode, String shopName, String shopCategory, String shopPic, int shopStar) {
+	public shopDTO(int shopCode, String shopName, String shopCategory, String shopPic, int shopStar, double shopX, double shopY) {
 		this.shopCode = shopCode;
 		this.shopName = shopName;
 		this.shopCategory = shopCategory;
 		this.shopPic = shopPic;
 		this.shopStar = shopStar;
+		this.shopX = shopX;
+		this.shopY = shopY;
 	}
+
+	
+	public shopDTO(int shopCode, int masterCode, String shopName, String shopCategory, String shopAddress,
+			String shopPic, String shopPhone, String shopContents, int shopStar, int reviewNum, double shopX,
+			double shopY) {
+		super();
+		this.shopCode = shopCode;
+		this.masterCode = masterCode;
+		this.shopName = shopName;
+		this.shopCategory = shopCategory;
+		this.shopAddress = shopAddress;
+		this.shopPic = shopPic;
+		this.shopPhone = shopPhone;
+		this.shopContents = shopContents;
+		this.shopStar = shopStar;
+		this.reviewNum = reviewNum;
+		this.shopX = shopX;
+		this.shopY = shopY;
+	}
+
+
 
 	public shopDTO(int shopCode, int masterCode, String shopName, String shopCategory, String shopAddress,
 			String shopPic, String shopPhone, String shopContents, int shopStar, int reviewNum) {
@@ -112,6 +135,17 @@ public class shopDTO {
 
 	public void setReviewNum(int reviewNum) {
 		this.reviewNum = reviewNum;
+	}
+
+	private double shopX;
+	private double shopY;
+
+	public double getShopX() {
+		return shopX;
+	}
+
+	public double getShopY() {
+		return shopY;
 	}
 
 }

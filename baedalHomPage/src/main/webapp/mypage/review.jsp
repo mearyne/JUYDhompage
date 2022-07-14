@@ -1,3 +1,8 @@
+<%@page import="shop.shopDTO"%>
+<%@page import="shop.shopDAO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="review.reviewDAO"%>
+<%@page import="review.reviewDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,6 +18,14 @@
 	<%
 	// 내가 작성했던 리뷰들을 볼 수 있는 장소입니다.
 	// 내가 작성했던 리뷰들을 수정, 삭제 할 수 있습니다.
+	int code =1;
+	reviewDAO rdao = reviewDAO.getInstance();
+	shopDAO sdao = shopDAO.getInstance();
+	
+	
+	ArrayList<reviewDTO> reviewdata = rdao.getuser(code);
+	
+	
 	%>
 	<jsp:include page="/header"></jsp:include>
 	<aside></aside>
@@ -26,17 +39,28 @@
         </div>
       
         
-          <div class="pagedetail"> 
-			<article>정보1</article>
-			<article>정보2</article>
-			<article>정보3</article>
-			<article>정보4</article>
-			<article>정보5</article>
+          <div class="pagedetail">
+          <%for(int i =0; i<reviewdata.size(); i++){
+        	  reviewDTO review = reviewdata.get(i);
+        	  shopDTO shop = sdao.getshopData(review.getShopCode());
+        	  
+        	  String shopname = shop.getShopName();
+        	  String reviewPic = review.getReviewPicture();
+        	  int reviewStar = review.getReviewStar();
+        	  String reviewContents  = review.getReviewContents();
+        	  
+        	  %> 
+			<article id="review<%=i+1%>">
+			<div id="shopname"><%=shopname %></div>
+			<div id="reviewpic"><img src="<%=reviewPic %>"></div>
+			<div id="reviewstar"><%=reviewStar %></div>
+			<div id="reviewcon"><%=reviewContents %></div>
+			</article>
         </div>
+          <%} %>
 	</section>
 
 	<aside></aside>
-
 	<jsp:include page="/footer"></jsp:include>
 
 </body>
