@@ -131,9 +131,10 @@
 				<div><h3>카테고리 : <%=shopInfo.getShopCategory() %></h3></div>
 				<div><h3>주소 : <%=shopInfo.getShopAddress() %></h3></div>
 				<div><h3>소개 : <%=shopInfo.getShopContents() %></h3></div>
-				<div><h3>별점 : <%=shopInfo.getShopStar() %></h3></div>
-				<div><h3>리뷰 숫자 : <%=shopInfo.getReviewNum() %></h3></div>
-				<button class="buttonMenu">예약하기</button>
+				<div><h3>별점 : <%=shopInfo.getShopStar() %>점</h3></div>
+				<div><h3>리뷰 숫자 : <%=shopInfo.getReviewNum() %>개</h3></div>
+				<br> <button class="buttonMenu">예약하기</button><br>
+				<button class="buttonMenu">찜하기</button>
 			
 			</div>
 		</div>

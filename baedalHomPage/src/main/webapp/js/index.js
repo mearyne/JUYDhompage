@@ -34,7 +34,26 @@ var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리
 // 4. 좌표로 주소 알아내기
 // https://apis.map.kakao.com/web/sample/coord2addr/
 
+// 코드값을 입력받아서 지도에 마커를 생성하기!
+function makeMarker(shopInfo) {
+	const position = new kakao.maps.LatLng(shopInfo.getShopX(), shopInfo.getShopY());
 
+	// 마커를 생성합니다
+	var marker = new kakao.maps.Marker({
+		position: position,
+		clickable: true // 마커를 클릭했을 때 지도의 클릭 이벤트가 발생하지 않도록 설정합니다
+	});
+
+	marker.setMap(map);
+
+	kakao.maps.event.addListener(marker, 'click', function() {
+		// 마커 위에 인포윈도우를 표시합니다
+		addShopInfoInSection(shopInfo);
+		infowindow.open(map, marker);
+	});
+
+
+}
 
 // 마커를 표시할 위치입니다 
 var position = new kakao.maps.LatLng(33.450701, 126.570667);
@@ -69,35 +88,18 @@ kakao.maps.event.addListener(marker, 'click', function() {
 	infowindow.open(map, marker);
 });
 
-function addShopInfoInSection() {
-	const contents = `<article>
-				<div class="articleBlock" id="subArticle1">
-					<div id="menuPicture1">가게사진이 들어올 자리</div>
-				</div>
-					<div class="articleBlock" id="subArticle2">
-						<div id="menuPicture2">
-							<div id="shopName">[가게 이름]</div>
-							<div class="menu" id="menu1">
-								<div class="menuBlock">
-									<div class="menuPic" id="menuPic1">메뉴사진1</div>
-								</div>
-								<div class="menuBlock">
-									<div class="menuName" id="menuName1">메뉴이름1</div>
-									<div class="menuPrice" id="menuPrice1">메뉴가격1</div>
-								</div>
-							</div>
-							<div class="menu" id="menu2">
-								<div class="menuBlock">
-									<div class="menuPic" id="menuPic2">메뉴사진2</div>
-								</div>
-								<div class="menuBlock">
-									<div class="menuName" id="menuName2">메뉴이름2</div>
-									<div class="menuPrice" id="menuPrice2">메뉴가격2</div>
-								</div>
-							</div>
-						</div>
+function addShopInfoInSection(shopInfo) {
+	const contents = String.format(`
+				<article onclick='location.href="shop?shopCode=%d"'>
+					<div class="articleBlock" id="subArticle1">
+						<div id="menuPicture1"><img src="%s"></div>
 					</div>
-				</article>`;
+					<div class="articleBlock" id="subArticle2">
+						<div id="shopName"><h1>[%s]</h1></div>
+						<div id="shopCategory"><h3>%s</h3></div>
+						<div id="shopStar"><h1>별점 : %d</h1></div>
+					</div>
+				</article>`, shopInfo.getShopCode(), shopInfo.getShopPic(), shopInfo.getShopName(), shopInfo.getShopCategory(), shopInfo.getShopStar());
 	const sectionSelector = document.getElementById('articleList');
 	sectionSelector.innerHTML = contents + sectionSelector.innerHTML;
 
@@ -114,7 +116,7 @@ function goToMyPage(logCode) {
 		location.href = "./myPage";
 	} else if (code.charAt(0) === 'm') {
 		// master로 로그인 된 상태라면 master마이페이지로 이동시킨다
-		location.href="./mypage_master";		
+		location.href = "./mypage_master";
 	}
 
 
