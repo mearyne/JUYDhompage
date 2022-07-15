@@ -150,8 +150,8 @@ public class userDAO {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, inputId);
 			rs = pstmt.executeQuery();
-			rs.next();
-			if (rs.getInt(1) > 0) {
+			
+			if (rs.next()) {
 				System.out.println("중복된 아이디입니다");
 				return false;
 			} else {
