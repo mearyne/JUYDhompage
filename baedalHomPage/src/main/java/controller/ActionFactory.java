@@ -2,6 +2,7 @@ package controller;
 
 import controller.action.AddFavoriteAction;
 import controller.action.ChangePwAction;
+import controller.action.ChangePwMasterAction;
 import controller.action.JoinMasterAction;
 import controller.action.JoinUserAction;
 import controller.action.LoginMasterAction;
@@ -32,6 +33,7 @@ public class ActionFactory {
 		else if (command.equals("logOut")) action = new logOutAction();
 		else if (command.equals("changePwAction")) action = new ChangePwAction();
 		else if (command.equals("addfavo")) action = new AddFavoriteAction();
+		else if (command.equals("changePwMasterAction")) action = new ChangePwMasterAction();
 		
 		return action;
 	}

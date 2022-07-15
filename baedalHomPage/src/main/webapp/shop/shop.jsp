@@ -11,6 +11,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <link rel="stylesheet" href="./css/shopdetail.css">
 
 <style>
@@ -62,6 +63,14 @@
 	button.buttonMenu {
 		font-size: 23px;
 	}
+	.submitMenu{
+	width: 232.5px;
+	    height: 48px;
+	    background: white;
+	    color: black;
+	    border: solid 1px;
+	    font-size: 23px;
+	}
 	
 	img#shopPicture {
 		height: 300px;
@@ -99,6 +108,10 @@
 	  position : relative;
 	}
 	
+	input:hover {
+			background-color: grey;
+	}
+	
 
 
 </style>
@@ -118,11 +131,14 @@
 	
 	int userCode =-1;
 	String user= (String)session.getAttribute("logCode");
-	System.out.println("userCode :"+user);
+	System.out.println("user :"+user);
 	if(user!=null){
-	user=user.substring(1);
-	userCode = Integer.parseInt(user);
+	String tempuser=user.substring(1);
+	userCode = Integer.parseInt(tempuser);
+	System.out.println("!!!logCode ="+ tempuser);
 	} 
+	System.out.println("userCode=" + userCode);
+	System.out.println("!!!user ="+ user);
 
 	
 	// 모든 메뉴, 리뷰의 정보를 가져옴
@@ -137,6 +153,7 @@
 	<input type="hidden" name="command" value="addfavo">
 	<input type="hidden" value="<%=userCode %>" name="usercode">
 	<input type="hidden" value="<%=shopCode %>" name="shopcode">
+	<input type="hidden" value="<%=user %>" name="user" class="favochk">
 		<div id="top">
 			<div id="shopPic"> <img id="shopPicture" src="<%=shopInfo.getShopPic()%>" ></div>
 			<div id="shopInfo">
@@ -147,8 +164,9 @@
 				<div><h3>별점 : <%=shopInfo.getShopStar() %>점</h3></div>
 				<div><h3>리뷰 숫자 : <%=shopInfo.getReviewNum() %>개</h3></div>
 				<br> <button class="buttonMenu">예약하기</button><br>
+				<!-- <button class="buttonMenu" id="favoritebutton" onclick="chkuser(form)">찜</button> -->
 				
-				<input type="submit" value="찜하기">
+				<input type="submit" class="submitMenu" value="찜하기">
 			
 			</div>
 		</div>

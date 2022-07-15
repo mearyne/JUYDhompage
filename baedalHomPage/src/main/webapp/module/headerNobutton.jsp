@@ -35,7 +35,9 @@ header {
 <body>
 	<header>
 		<div class="logo">
-			<a href="./index">가게 예약 사이트</a>
+		<img src="https://img.freepik.com/premium-vector/chef-cook-vector-line-sketch-hand-drawn-illustration_77430-45.jpg" style="width: 100px; height: 100px;">
+			<a href="./index">예약의 민족</a>
+			<img src="https://img.freepik.com/premium-vector/chef-cook-vector-line-sketch-hand-drawn-illustration_77430-45.jpg" style="width: 100px; height: 100px;">
 		</div>
 		<script src='../js/index.js'></script>
 	</header>

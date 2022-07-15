@@ -34,7 +34,6 @@
 	
 	%>
 	<jsp:include page="/header"></jsp:include>
-	
 	<aside></aside>
 	<section>
 		<div id="map"></div>

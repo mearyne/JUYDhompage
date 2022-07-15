@@ -1,5 +1,6 @@
-<%@page import="user.userDTO"%>
-<%@page import="user.userDAO"%>
+
+<%@page import="user.masterDTO"%>
+<%@page import="user.masterDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,50 +8,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/mypage.css">
-    
+    <link rel="stylesheet" href="../css/mypage_master.css">
     <style>
-    	/* 비밀번호 텍스트 박스 디자인 수정 */
     	form{
     		margin:20px;
     		padding:50px;
     	}
-    	
     	a.text{
     		padding-right:50px;
     	}
-    	
     	input#pw{
     		margin-bottom:10px;
     	}
-    	
-    	input[type="password"] {
-		    background:white;
-		    border:1px solid black;
-		    width: 250px;
-		}
     </style>
-    
     <title>mypage</title>
 </head>
 <body>
 	<%	
+	
 		// 세션에 올라와있는 로그인된 유저코드
 		String tmpUser = (String) session.getAttribute("logCode");
 		tmpUser = tmpUser.substring(1);
-	   	int userCode = Integer.parseInt(tmpUser);
+	   	int masterCode = Integer.parseInt(tmpUser);
 	   	
 	   	// 확인용
-	   	System.out.println(userCode);
+	   	System.out.println(masterCode);
     	
-    	userDAO dao = userDAO.getInstance();
+	   	masterDAO dao = masterDAO.getInstance();
     	// dto = 유저데이터
-		userDTO dto = dao.getData(userCode);
+		masterDTO dto = dao.getData(masterCode);
     	
     	// dto를 이용해서 데이터를 뽑아냈다
-    	String name = dto.getUserName();
-    	String id = dto.getUserId();
-    	String contact = dto.getUserContact();
+    	String name = dto.getMasterName();
+    	String id = dto.getMasterId();
+    	String contact = dto.getMasterContact();
     	
    %>
 	<jsp:include page="/header"></jsp:include>
@@ -66,8 +57,8 @@
         <div class="pagedetail"> 
 			
 			<form method="post" action="../Service">
-				<input type="hidden" name="command" value="changePwAction">
-				<input type="hidden" name="userCode" value=<%=userCode %>>
+				<input type="hidden" name="command" value="changePwMasterAction">
+				<input type="hidden" name="userCode" value=<%=masterCode %>>
 				<a class="text">현재 비밀번호</a><input type="password" id="pw" name="pw" > <br>
 				<a class="text">바꿀 비밀번호</a><input type="password" id="pw" name="changePw"> <br>
 				<a class="text">재확인 비밀번호</a><input type="password" id="pw" name="douChkPw"> <br>
