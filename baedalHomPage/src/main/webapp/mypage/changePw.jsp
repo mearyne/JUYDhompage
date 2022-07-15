@@ -16,7 +16,7 @@
     		padding:50px;
     	}
     	
-    	a.text{
+    	a.text{ 
     		padding-right:50px;
     	}
     	
@@ -26,6 +26,7 @@
     	
     	input[type="password"] {
 		    background:white;
+		    color:black;
 		    border:1px solid black;
 		    width: 250px;
 		}

@@ -48,7 +48,7 @@
 			<a class="mydetail" id="name">이름 :<%= name %></a>
 			<a class="mydetail" id="contact">전화 번호 : <%=contact %></a>
 			
-			<form method="post" action="">
+			<form method="post" action="./mypage/changePwMaster.jsp">
 				<input type="submit" value="비밀번호 변경" class="mydetail" id="changpw" >
 			</form>
 			

@@ -14,12 +14,21 @@
     		margin:20px;
     		padding:50px;
     	}
+    	
     	a.text{
     		padding-right:50px;
     	}
+    	
     	input#pw{
     		margin-bottom:10px;
     	}
+    	
+    	input[type="password"] {
+		    background:white;
+		    color:black;
+		    border:1px solid black;
+		    width: 250px;
+		}
     </style>
     <title>mypage</title>
 </head>
