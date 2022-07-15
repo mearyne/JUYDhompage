@@ -18,7 +18,10 @@
 	<%
 	// 내가 작성했던 리뷰들을 볼 수 있는 장소입니다.
 	// 내가 작성했던 리뷰들을 수정, 삭제 할 수 있습니다.
-	int code =1;
+	String userCode = (String) session.getAttribute("logCode");
+	userCode = userCode.substring(1);
+	int code = Integer.parseInt(userCode);
+	//int code = 1;
 	reviewDAO rdao = reviewDAO.getInstance();
 	shopDAO sdao = shopDAO.getInstance();
 	
@@ -56,8 +59,8 @@
 			<div id="reviewstar"><%=reviewStar %></div>
 			<div id="reviewcon"><%=reviewContents %></div>
 			</article>
-        </div>
           <%} %>
+        </div>
 	</section>
 
 	<aside></aside>
