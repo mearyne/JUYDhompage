@@ -29,7 +29,7 @@
 					</div>
 				</form>
 				<div class="login-button-wrap">
-					<button type="button" onclick="location.href='../join/join.jsp'">회원가입</button>
+					<button type="button" onclick="location.href='join_master'">회원가입</button>
 				</div>
 			</section>
 		</div>
