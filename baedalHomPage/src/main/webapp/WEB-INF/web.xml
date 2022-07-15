@@ -177,6 +177,15 @@
 		<servlet-name>mypage_master</servlet-name>
 		<url-pattern>/mypage_master</url-pattern>
 	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>indexFavorite</servlet-name>
+		<jsp-file>/indexFavorite.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>indexFavorite</servlet-name>
+		<url-pattern>/indexFavorite</url-pattern>
+	</servlet-mapping>
 	
 
 

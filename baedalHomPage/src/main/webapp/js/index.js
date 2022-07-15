@@ -30,9 +30,8 @@ function makeMarker(shopX, shopY, shopCode, shopPic, shopName, shopCategory, sho
 	
 	// 마커에 클릭이벤트를 등록합니다
 	kakao.maps.event.addListener(marker, 'click', function() {
-	// 마커 위에 인포윈도우를 표시합니다
-	addShopInfoInSection(shopCode, shopPic, shopName, shopCategory, shopStar);
-});
+		addShopInfoInSection(shopCode, shopPic, shopName, shopCategory, shopStar);
+	});
 }
 
 
@@ -66,4 +65,16 @@ function goToMyPage(logCode) {
 		// master로 로그인 된 상태라면 master마이페이지로 이동시킨다
 		location.href = "./mypage_master";
 	}
-}
+}
+
+// 메인페이지에서 찜목록을 눌렀을때 로그인 여부를 판단함
+function viewFavoriteList(logCode) {
+	let code = String(logCode);
+	if (code.charAt(0) === '-') {
+		alert("로그인이 필요합니다");
+	} else {
+		location.href = './indexFavorite';
+	}
+	
+	
+}

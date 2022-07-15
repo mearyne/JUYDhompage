@@ -10,31 +10,32 @@
 
 <!-- kakao map을 불러오기 위한 코드입니다 -->
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7c74772d00f549d2606dc566151ba1cd"></script>
-<title>main page</title>
+<title>mainpage</title>
 </head>
 <body>
 	<%
 	// 메인 페이지입니다.
-//	if (session.getAttribute("chkLog") == null) {
-//		session.setAttribute("chkLog", 0);
-//	}
 	System.out.println("logCode :: " + ((String) session.getAttribute("logCode")));
 	shopDAO shopdao = shopDAO.getInstance();
 	
 	ArrayList<shopDTO> shopArr = shopdao.bringShopArr();
-	
-	%>
-	<jsp:include page="/header"></jsp:include>
 
+	// 로그인 코드를 session에서 가져옴 
+	String chk = "-1";
+	if (session.getAttribute("logCode") != null) {
+		chk = (String) session.getAttribute("logCode"); // u1111
+		chk = String.format("`%s`", chk); // `u1111` 
+	}
+	%>
+	
+	<jsp:include page="/header"></jsp:include>
 	<aside></aside>
-	
-	
 
 	<section>
 		<div id="map"></div>
 		<div id="info">
-			<button id="shopInfo">가게</button>
-			<button id="favoriteInfo">찜가게</button>
+			<button id="shopInfo" style="background-color: rgb(176, 176, 176);" onclick='location.href=`./index`'>가게</button>
+			<button id="favoriteInfo" onclick='viewFavoriteList(<%=chk %>)'>찜가게</button>
 			<div id="articleList">
 			<script src="./js/index.js"></script>
 			
@@ -64,9 +65,6 @@
 	</section>
 	<aside></aside>
 	<jsp:include page="/footer"></jsp:include>
-<!-- 	<script src="./js/index.js"></script> -->
-
-	<!-- 맵을 불러오는 자바스크립트 -->
 
 </body>
 </html>

@@ -58,6 +58,10 @@ body {
     margin: 0; /* 리셋을 하지 않은 경우 추가 */
 }
 
+article:hover {
+	background: grey;
+}
+
 </style>
 
 <title>header</title>
