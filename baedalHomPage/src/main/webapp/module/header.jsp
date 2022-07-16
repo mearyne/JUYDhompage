@@ -94,10 +94,11 @@ article:hover {
 			}
 			%>
 			<button class="mainButton" id="mypageButton" onclick="goToMyPage(<%=chk%>)">마이페이지</button>
+			<button class="mainButton" onclick="goToQA">QA</button>
 		</div>
 		<div class="logo">
 			<img src="https://img.freepik.com/premium-vector/chef-cook-vector-line-sketch-hand-drawn-illustration_77430-45.jpg" style="width: 100px; height: 100px;">
-			<a href="./index">예약의 민족</a>
+			<a href="index">예약의 민족</a>
 			<img src="https://img.freepik.com/premium-vector/chef-cook-vector-line-sketch-hand-drawn-illustration_77430-45.jpg" style="width: 100px; height: 100px;">
 		</div>
 

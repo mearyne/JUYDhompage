@@ -163,7 +163,7 @@
 				<div><h3>소개 : <%=shopInfo.getShopContents() %></h3></div>
 				<div><h3>별점 : <%=shopInfo.getShopStar() %>점</h3></div>
 				<div><h3>리뷰 숫자 : <%=shopInfo.getReviewNum() %>개</h3></div>
-				<br> <button class="buttonMenu">예약하기</button><br>
+				<br> <button class="buttonMenu" onclick="location.href='booking'">예약하기</button><br>
 				<!-- <button class="buttonMenu" id="favoritebutton" onclick="chkuser(form)">찜</button> -->
 				<input type="submit" class="submitMenu" value="찜하기">
 			
