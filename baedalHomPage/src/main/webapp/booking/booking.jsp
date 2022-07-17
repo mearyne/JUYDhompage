@@ -13,10 +13,10 @@
 	
 	%>
 
-	<jsp:include page="../module/header.jsp"></jsp:include>
+	<jsp:include page="/module/header.jsp"></jsp:include>
 	<h1 style="text-align: center;">예약하기</h1>
 	
-	<jsp:include page="../module/footer.jsp"></jsp:include>
+	<jsp:include page="/module/footer.jsp"></jsp:include>
 
 
 </body>

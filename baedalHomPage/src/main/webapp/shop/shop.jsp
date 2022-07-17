@@ -150,25 +150,25 @@
 	<aside></aside>
 	<section>
 	<form action="./Service" method="post" >
-	<input type="hidden" name="command" value="addfavo">
-	<input type="hidden" value="<%=userCode %>" name="usercode">
-	<input type="hidden" value="<%=shopCode %>" name="shopcode">
-	<input type="hidden" value="<%=user %>" name="user" class="favochk">
-		<div id="top">
-			<div id="shopPic"> <img id="shopPicture" src="<%=shopInfo.getShopPic()%>" ></div>
-			<div id="shopInfo">
-				<div><h1>가게이름 : <%=shopInfo.getShopName() %></h1></div>
-				<div><h3>카테고리 : <%=shopInfo.getShopCategory() %></h3></div>
-				<div><h3>주소 : <%=shopInfo.getShopAddress() %></h3></div>
-				<div><h3>소개 : <%=shopInfo.getShopContents() %></h3></div>
-				<div><h3>별점 : <%=shopInfo.getShopStar() %>점</h3></div>
-				<div><h3>리뷰 숫자 : <%=shopInfo.getReviewNum() %>개</h3></div>
-				<br> <button class="buttonMenu" onclick="location.href='booking'">예약하기</button><br>
-				<!-- <button class="buttonMenu" id="favoritebutton" onclick="chkuser(form)">찜</button> -->
-				<input type="submit" class="submitMenu" value="찜하기">
-			
+		<input type="hidden" name="command" value="addfavo">
+		<input type="hidden" value="<%=userCode %>" name="usercode">
+		<input type="hidden" value="<%=shopCode %>" name="shopcode">
+		<input type="hidden" value="<%=user %>" name="user" class="favochk">
+			<div id="top">
+				<div id="shopPic"> <img id="shopPicture" src="<%=shopInfo.getShopPic()%>" ></div>
+				<div id="shopInfo">
+					<div><h1>가게이름 : <%=shopInfo.getShopName() %></h1></div>
+					<div><h3>카테고리 : <%=shopInfo.getShopCategory() %></h3></div>
+					<div><h3>주소 : <%=shopInfo.getShopAddress() %></h3></div>
+					<div><h3>소개 : <%=shopInfo.getShopContents() %></h3></div>
+					<div><h3>별점 : <%=shopInfo.getShopStar() %>점</h3></div>
+					<div><h3>리뷰 숫자 : <%=shopInfo.getReviewNum() %>개</h3></div>
+					<br> <input type="button" class="buttonMenu" value="예약하기" onclick="location.href='./booking?shopCode=<%=shopCode%>'"><br>
+					<!-- <button class="buttonMenu" id="favoritebutton" onclick="chkuser(form)">찜</button> -->
+					<input type="submit" class="submitMenu" value="찜하기">
+				
+				</div>
 			</div>
-		</div>
 	</form>
 		<div id="bottom">
 			<div>

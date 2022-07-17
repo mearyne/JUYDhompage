@@ -195,4 +195,22 @@
 		<servlet-name>booking</servlet-name>
 		<url-pattern>/booking</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>QA</servlet-name>
+		<jsp-file>/QA/QA.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>QA</servlet-name>
+		<url-pattern>/QA</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>updateShop</servlet-name>
+		<jsp-file>/masterOption/updateShop.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>updateShop</servlet-name>
+		<url-pattern>/updateShop</url-pattern>
+	</servlet-mapping>
 </web-app>
