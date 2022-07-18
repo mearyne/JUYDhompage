@@ -98,7 +98,7 @@ article:hover {
 			<img src="https://img.freepik.com/premium-vector/chef-cook-vector-line-sketch-hand-drawn-illustration_77430-45.jpg" style="width: 100px; height: 100px;">
 		</div>
 
-		<script src='../js/index.js'></script>
+		<script src='./js/index.js'></script>
 	</header>
 </body>
 </html>
