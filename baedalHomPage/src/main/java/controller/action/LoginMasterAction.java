@@ -28,20 +28,20 @@ public class LoginMasterAction implements Action {
 		int log = dao.checkMasterLogin(id, pw);
 
 		String url;
+		HttpSession session = request.getSession();
 		if (log != -1) {
 			System.out.println("로그인됨");
-			HttpSession session = request.getSession();
 			session.setAttribute("logCode", "m"+log); // "u1111" 형태로 저장이 된다
 			url = "index";
 		} else {
 			System.out.println("로그인 실패");
-			url = "loginUser";
+			session.setAttribute("logCode", log); // -1이 저장된다
+			url = "loginMaster";
 		}
 
 		request.getRequestDispatcher(url).forward(request, response);
 
-		HttpSession session = request.getSession();
-		session.setAttribute("log", id);
+		session.setAttribute("log", id); // 이건 어디에 쓰이지?
 	}
 
 }

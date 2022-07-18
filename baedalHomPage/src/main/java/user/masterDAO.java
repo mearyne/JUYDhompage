@@ -32,11 +32,12 @@ public class masterDAO {
 			pstmt.setString(2, masterPw);
 
 			rs = pstmt.executeQuery();
-			rs.next();
-			System.out.println("LOGIN CHECK SUCCESS!");
 
-			if (rs.getInt(1) > 0) {
-				check = rs.getInt(1); // 아이디와 비밀번호 일치
+			if (rs.next()) {
+				System.out.println("LOGIN CHECK SUCCESS!");
+				check = rs.getInt(1); // 아이디와 비밀번호 일치하면 코드값을 저장함
+			} else {
+				System.out.println("LOGIN CHECK FAIL!");
 			}
 
 		} catch (Exception e) {
