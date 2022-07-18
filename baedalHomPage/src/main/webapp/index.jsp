@@ -26,6 +26,7 @@
 		chk = (String) session.getAttribute("logCode"); // u1111
 		chk = String.format("`%s`", chk); // `u1111` 
 	}
+	
 	%>
 	
 	<jsp:include page="/header"></jsp:include>

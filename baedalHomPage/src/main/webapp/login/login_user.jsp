@@ -6,6 +6,14 @@
 <link rel="stylesheet" href="./css/login.css">
 </head>
 <body>
+	<%
+	Integer logCode = (Integer) session.getAttribute("logCode");
+	if (logCode != null && logCode == -1) {
+		%> <script>alert('로그인 실패');</script> <%
+		session.removeAttribute("logCode");
+	}
+	%>
+
 	<jsp:include page="/headerNobutton"></jsp:include>
 	
 	<div class="main-container">

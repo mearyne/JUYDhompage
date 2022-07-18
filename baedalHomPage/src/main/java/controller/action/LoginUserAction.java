@@ -34,16 +34,16 @@ public class LoginUserAction implements Action {
 		int log = dao.checkUserLogin(id, pw);
 		
 		String url;
+		HttpSession session = request.getSession();
 		if (log != -1) {
 			System.out.println("로그인됨");
-			HttpSession session = request.getSession();
 			session.setAttribute("logCode", "u"+log); // "u1111" 형태로 저장이 된다
 			url = "index";
 		} else {
 			System.out.println("로그인 실패");
+			session.setAttribute("logCode", log); // -1로 저장이 된다
 			url = "loginUser";
 		}
-
 		request.getRequestDispatcher(url).forward(request, response);
 
 	}

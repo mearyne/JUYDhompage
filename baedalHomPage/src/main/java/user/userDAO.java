@@ -60,21 +60,21 @@ public class userDAO {
 			pstmt.setString(2, userPw);
 
 			rs = pstmt.executeQuery();
-			rs.next();
-
-			System.out.println("LOGIN CHECK SUCCESS!");
-
-			if (rs.getString(3).equals(userId) && rs.getString(4).equals(userPw)) {
-				check = rs.getInt(1); // 아이디와 비밀번호 일치
-
+			if (rs.next()) {
+				System.out.println("LOGIN CHECK SUCCESS!");
+				check = rs.getInt(1);
 			} else {
-				check = -1; // 아이디와 비밀번호 불일치
+				System.out.println("LOGIN CHECK FAIL!");
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("LOGIN ERROR!");
+		} finally {
+			conn = null;
+			
 		}
+		System.out.println("로그인할때 logCode 값은 "+ check+"입니다");
 		return check;
 	}
 
