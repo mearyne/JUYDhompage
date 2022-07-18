@@ -23,7 +23,7 @@
         <!-- header -->
 		<jsp:include page="/module/header.jsp"></jsp:include>
 		
-		<form method="post" action="../Service" >
+		<form method="post" action="./Service" >
 	        <input type="hidden" name="command" value="joinmaster">
 			<!-- wrapper -->
 			<div id="wrapper">
@@ -99,23 +99,7 @@
 					</div>
 	
 	
-					<!-- 가게 등록 -->
-					<!-- 맵에 들어설 공간 -->
-					<h3>상점의 위치를 클릭하세요</h3>
-					<div id="MapBlock">
-						<div class="map_wrap">
-						    <div id="map" style="width:350px;height:350px;"></div>
-						    <div class="hAddr">
-						        <span class="title">지도중심기준 행정동 주소정보</span>
-						        <span id="centerAddr"></span>
-						    </div>
-						</div>
-					</div>
 					
-					<!-- 여기에 좌표, 주소가 표시된다 -->
-					<div id="clickAddress"></div>
-					<div id="clickLatlng"></div>
-	
 	                <!-- JOIN BTN-->
 	                <div class="btn_area">
 	                  <input type="button" id="btnJoin" onclick="checkJoinVal(form)" value="JOIN">
@@ -129,7 +113,6 @@
 	        <!-- wrapper -->
 	    <script src="index.js"></script>
 	    <script src="./js/join.js"></script>
-	    <script src="./js/updateShop.js"></script>
 	
 	</body>
     

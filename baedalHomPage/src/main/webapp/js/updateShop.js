@@ -48,7 +48,7 @@ kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
 
 	 // 클릭한 위도, 경도 정보를 가져옵니다 
     var latlng = mouseEvent.latLng; 
-    var message = `<input type="hidden" name="shopX" value=${latlng.getLat()}>`;    
+    var message = `<input type="hidden" class="int" name="shopX" value=${latlng.getLat()}>`;    
 	message += `<input type="hidden" name="shopY" value=${latlng.getLng()}>`;    
 
     var resultDiv = document.getElementById('clickLatlng'); 

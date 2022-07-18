@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Random;
 
 import menu.menuDTO;
 import user.userDTO;
@@ -73,7 +74,7 @@ public class shopDAO {
 
 			rs = pstmt.executeQuery();
 			System.out.println(rs);
-			
+
 			// shopCode를 가지고 있는 모든 menu들을 배열 안에 집어넣어서 반환시킨다
 			while (rs.next()) {
 				int shopCode = rs.getInt(1);
@@ -83,12 +84,12 @@ public class shopDAO {
 				int shopStar = rs.getInt(9);
 				double shopX = rs.getDouble(11);
 				double shopY = rs.getDouble(12);
-				
+
 				System.out.println(shopX);
 				System.out.println(shopY);
-				
+
 				shopDTO shop = new shopDTO(shopCode, shopName, shopCategory, shopPic, shopStar, shopX, shopY);
-				
+
 				shopArr.add(shop);
 			}
 			System.out.println("가게 반환 성공");
@@ -97,11 +98,11 @@ public class shopDAO {
 			// TODO: handle exception
 			System.out.println("가게 반환 실패");
 			e.printStackTrace();
-			
+
 		}
 		return null;
 	}
-	
+
 	// master코드를 이용해서 가게 데이터를 가져옴
 	public shopDTO getShopOfMasterCode(int inputCode) {
 		String sql = "select * from shop where masterCode =?";
@@ -140,21 +141,52 @@ public class shopDAO {
 
 		}
 		return null;
-		
-		
+
 	}
 
-	// 가게 정보를 업데이트 한다
-	public void updateShopInfo(int shopCode, String address, double shopX, double shopY) {
-		String sql = "update shop set shopAddress=?, X=?, Y=? where shopCode=?";
+	// 랜덤 shopCode 반환함
+	public int rCode() {
+		Random rand = new Random();
+		int rCode = -1;
 		try {
+			String sql = "select * from shop where shopCode = ?";
+			while (true) {
+				rCode = rand.nextInt(8999) + 1000;
+				conn = DBManager.getConnection("booking");
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, rCode);
+				
+				rs = pstmt.executeQuery();
+				if (!rs.next()) {
+					System.out.println("shop랜덤코드 반환 성공");
+					break;
+				}
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("shop랜덤코드 반환 실패");
+		}
+
+		return rCode;
+	}
+
+	public void updateShopInfo(shopDTO shopDTO) {
+		String sql = "update shop set shopName=?, shopCategory=?, shopPic=?, shopPhone=?, shopContents=?, shopAddress=?, X=?, Y=?  where shopCode=?";
+		try {
+			
 			conn = DBManager.getConnection("booking");
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, address);
-			pstmt.setDouble(2, shopX);
-			pstmt.setDouble(3, shopY);
-			pstmt.setInt(4, shopCode);
-			
+			pstmt.setString(1, shopDTO.getShopName());
+			pstmt.setString(2, shopDTO.getShopCategory());
+			pstmt.setString(3, shopDTO.getShopPic());
+			pstmt.setString(4, shopDTO.getShopPhone());
+			pstmt.setString(5, shopDTO.getShopContents());
+			pstmt.setString(6, shopDTO.getShopAddress());
+			pstmt.setDouble(7, shopDTO.getShopX());
+			pstmt.setDouble(8, shopDTO.getShopY());
+			pstmt.setInt(9, shopDTO.getShopCode());
+
 			pstmt.execute();
 
 			System.out.println("주소 업데이트 성공");
@@ -162,6 +194,36 @@ public class shopDAO {
 			System.out.println("주소 업데이트 실패");
 			e.printStackTrace();
 
+		}
+
+	}
+
+	public void createShopDTO(shopDTO shopDTO) {
+		String sql = "insert into shop values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		try {
+			
+			conn = DBManager.getConnection("booking");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, shopDTO.getShopCode());
+			pstmt.setInt(2, shopDTO.getMasterCode());
+			pstmt.setString(3, shopDTO.getShopName());
+			pstmt.setString(4, shopDTO.getShopCategory());
+			pstmt.setString(5, shopDTO.getShopAddress());
+			pstmt.setString(6, shopDTO.getShopPic());
+			pstmt.setString(7, shopDTO.getShopPhone());
+			pstmt.setString(8, shopDTO.getShopContents());
+			pstmt.setInt(9, 0);
+			pstmt.setInt(10, 0);
+			pstmt.setDouble(11, shopDTO.getShopX());
+			pstmt.setDouble(12, shopDTO.getShopY());
+			
+			pstmt.execute();
+			
+			System.out.println("주소 업데이트 성공");
+		} catch (Exception e) {
+			System.out.println("주소 업데이트 실패");
+			e.printStackTrace();
+			
 		}
 		
 	}

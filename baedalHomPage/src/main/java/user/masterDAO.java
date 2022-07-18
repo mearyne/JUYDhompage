@@ -38,120 +38,118 @@ public class masterDAO {
 			if (rs.getInt(1) > 0) {
 				check = rs.getInt(1); // 아이디와 비밀번호 일치
 			}
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("LOGIN ERROR!");
 		}
 		return check;
 	}
-	
+
 	// 유저를 데이터베이스에 추가한다
-	public boolean addUser(masterDTO master) { 
+	public boolean addUser(masterDTO master) {
 		String sql = "insert into master values(?,?,?,?,?,?)"; // sql은 인덱스 1부터 시작
 		try {
 			conn = DBManager.getConnection("booking");
 			pstmt = conn.prepareStatement(sql);
+
 			pstmt.setInt(1, master.getMasterCode());
 			pstmt.setInt(2, master.getMastrShopCode());
 			pstmt.setString(3, master.getMasterName());
 			pstmt.setString(4, master.getMasterId());
 			pstmt.setString(5, master.getMasterPw());
 			pstmt.setString(6, master.getMasterContact());
-			boolean suc = pstmt.execute();
-			System.out.println(suc);
-			// pstmt (쿼리 날릴) 준비 완료
-			if (!suc) {
-				System.out.println("insert 완료");
-				pstmt = null;
-				return true;
-			}
+			pstmt.execute();
+
+			System.out.println("insert 완료");
+
 		} catch (SQLException e) {
-			System.out.println("insert 실패");
-			pstmt = null;
 			e.printStackTrace();
+			System.out.println("insert 실패");
+		} finally {
+			conn = null;
+			pstmt = null;
+
 		}
-		return false;
+		return true;
 	}
-	
+
 	// 마이페이지 현재 로그인한 마스터의 정보를 가져오기
-	public masterDTO getData(int code) { 
-		String sql ="select * from master where masterCode =?";
+	public masterDTO getData(int code) {
+		String sql = "select * from master where masterCode=?";
 		try {
 			conn = DBManager.getConnection("booking");
-			pstmt=conn.prepareStatement(sql);
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, code);
-			rs=pstmt.executeQuery();
+			rs = pstmt.executeQuery();
 			System.out.println(rs);
-			while(rs.next()) {
-				
-			int no = rs.getInt(1);
-			int shop = rs.getInt(2);
-			String name = rs.getString(3);
-			String id = rs.getString(4);
-			String pw = rs.getString(5);
-			String con = rs.getString(6);
-			System.out.println(no);
-			System.out.println(shop);
-			System.out.println(name);
-			System.out.println(id);
-			System.out.println(pw);
-			System.out.println(con);
-			masterDTO dto = new masterDTO(no,shop,name,id,pw,con);
-			return dto;
+			while (rs.next()) {
+
+				int no = rs.getInt(1);
+				int shop = rs.getInt(2);
+				String name = rs.getString(3);
+				String id = rs.getString(4);
+				String pw = rs.getString(5);
+				String con = rs.getString(6);
+				System.out.println(no);
+				System.out.println(shop);
+				System.out.println(name);
+				System.out.println(id);
+				System.out.println(pw);
+				System.out.println(con);
+				masterDTO dto = new masterDTO(no, shop, name, id, pw, con);
+				return dto;
 			}
-					
+
 			System.out.println("성공");
-			
-			
+
 		} catch (Exception e) {
 			System.out.println("실패");
 			e.printStackTrace();
-			
-		}		
+
+		}
 		return null;
 	}
-	
+
 	// 랜덤 4자리코드를 생성하고 중복확인하는 메소드
-	public int chkCode() { 
-		Random ran=new Random();
-		int ranNum=ran.nextInt(899)+1000;
-		System.out.println(ranNum);
+	public int chkCode() {
+		Random ran = new Random();
 		try {
 			conn = DBManager.getConnection("booking");
-			String sql = "select masterCode from manager";
-			pstmt = conn.prepareStatement(sql);		
-			rs = pstmt.executeQuery(); 
-			
-			while (rs.next()) {
-				int code=rs.getInt(1);
-				System.out.println(code);
-				if(code!=1) {
-					System.out.println("중복 없음");
+
+			while (true) {
+				int ranNum = ran.nextInt(8999) + 1000;
+				String sql = "select * from master where masterCode="+ranNum;
+				pstmt = conn.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+
+				if (!rs.next()) {
+					System.out.println("랜덤코드 뽑음");
+					System.out.println("랜덤코드는 "+ranNum+"입니다");
+					pstmt = null;
 					return ranNum;
 				}
-				pstmt=null;
 			}
 		} catch (SQLException e) {
-			System.out.println("중복 있음");
-			pstmt=null;
 			e.printStackTrace();
+			System.out.println("랜덤코드 뽑음");
+			pstmt = null;
 		}
 		return -1;
 	}
-	
-	//현재 비밀번호와 바꿀 비밀번호를 비교하고 일치하지 않으면 바꿀 비밀번호를 두번 입력받아서 비밀번호 변경
-	public boolean updateMasterPw(String code,String pw,String chPw,String doubleChkPw) { 
-		if(!pw.equals(chPw)) {
-			if(chPw.equals(doubleChkPw)) {
+
+	// 현재 비밀번호와 바꿀 비밀번호를 비교하고 일치하지 않으면 바꿀 비밀번호를 두번 입력받아서 비밀번호 변경
+	public boolean updateMasterPw(String code, String pw, String chPw, String doubleChkPw) {
+		if (!pw.equals(chPw)) {
+			if (chPw.equals(doubleChkPw)) {
 				try {
 					String sql = "UPDATE master SET masterPw=? where masterCode=?;";
 					conn = DBManager.getConnection("booking");
-					pstmt = conn.prepareStatement(sql);		
+					pstmt = conn.prepareStatement(sql);
 					pstmt.setString(1, chPw);
 					pstmt.setInt(2, Integer.parseInt(code));
-					
-					int temp = pstmt.executeUpdate(); 
+
+					int temp = pstmt.executeUpdate();
 					System.out.println(temp);
 					return true;
 				} catch (Exception e) {

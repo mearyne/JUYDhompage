@@ -56,6 +56,20 @@ public class shopDTO {
 		this.shopStar = shopStar;
 		this.reviewNum = reviewNum;
 	}
+	
+	public shopDTO(int shopCode, String shopName, String shopCategory, String shopAddress, String shopPic,
+			String shopPhone, String shopContents, double shopX, double shopY) {
+		this.shopCode = shopCode;
+		this.shopName = shopName;
+		this.shopCategory = shopCategory;
+		this.shopAddress = shopAddress;
+		this.shopPic = shopPic;
+		this.shopPhone = shopPhone;
+		this.shopContents = shopContents;
+		this.shopX = shopX;
+		this.shopY = shopY;
+	}
+
 
 	public String getShopPhone() {
 		return shopPhone;

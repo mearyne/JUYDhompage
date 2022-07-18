@@ -29,6 +29,15 @@ public class JoinMasterAction implements Action {
 		
 		String url ="";
 		
+//		pstmt.setInt(1, master.getMasterCode());
+//		pstmt.setInt(2, master.getMastrShopCode());
+//		pstmt.setString(3, master.getMasterName());
+//		pstmt.setString(4, master.getMasterId());
+//		pstmt.setString(5, master.getMasterPw());
+//		pstmt.setString(6, master.getMasterContact());
+		
+		user = new masterDTO(code, 0, name, id, pw, mobile);
+		
 		if(dao.addUser(user)) {
 			url="loginUser";
 		}else
