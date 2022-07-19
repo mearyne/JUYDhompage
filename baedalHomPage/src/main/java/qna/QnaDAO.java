@@ -24,7 +24,7 @@ public class QnaDAO {
 	private PreparedStatement pstmt = null;
 
 	public boolean addQnaData(QnaDTO dto) { // qna 추가
-		Date date = new Date(dto.getYear()-1900,dto.getMonth()-1,dto.getDay());
+		Date date = new Date(dto.getYear(),dto.getMonth()+1,dto.getDay());
 		Timestamp up_date = new Timestamp(date.getTime());
 		String sql = "insert into qna values(?,?,?,?,?)";
 

@@ -37,9 +37,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
 				<%
-				
 				for(int i=0;i<list.size();i++){
 					QnaDTO dto = list.get(i);
 					userDTO udto = udao.getData(dto.getUserCode());
@@ -48,17 +46,15 @@
 					int userCode= udto.getUserCode();
 					String title = dto.getTitle();
 					String contents=dto.getContents();
-					
-
 				%>
+				<tr>
 				<td><%=no %></td>
 				<td><%=title %></td>
-				<td><%=dto.getYear()%>-<%=dto.getMonth()%>-<%=dto.getDay()%></td>
-				
+				<td><%=dto.getYear()+1900%>-<%=dto.getMonth()+1%>-<%=dto.getDay()%></td>
+				</tr>
 				<%
 				}
 				%>
-			</tr>
 		</tbody>
 	</table>
 	<jsp:include page="/module/footer.jsp"></jsp:include>

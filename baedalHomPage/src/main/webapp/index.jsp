@@ -19,13 +19,13 @@
 	shopDAO shopdao = shopDAO.getInstance();
 	
 	ArrayList<shopDTO> shopArr = shopdao.bringShopArr();
-
 	// 로그인 코드를 session에서 가져옴 
 	String chk = "-1";
 	if (session.getAttribute("logCode") != null) {
 		chk = (String) session.getAttribute("logCode"); // u1111
 		chk = String.format("`%s`", chk); // `u1111` 
 	}
+	
 	%>
 	
 	<jsp:include page="/header"></jsp:include>
