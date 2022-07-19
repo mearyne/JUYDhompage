@@ -74,7 +74,9 @@ article:hover {
 		<div class="headerButton">
 			<%
 			String chk = "-1";
-			if (session.getAttribute("logCode") != null) {
+			Object logCodeObject = session.getAttribute("logCode");
+			if (logCodeObject != null) {
+				String logCode = (String) logCodeObject;
 				chk = (String) session.getAttribute("logCode"); // u1111
 				chk = String.format("`%s`", chk); // `u1111` 
 			}

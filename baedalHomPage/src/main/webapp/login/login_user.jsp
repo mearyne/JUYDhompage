@@ -7,11 +7,16 @@
 </head>
 <body>
 	<%
-	Integer logCode = (Integer) session.getAttribute("logCode");
-	if (logCode != null && logCode == -1) {
-		%> <script>alert('로그인 실패');</script> <%
-		session.removeAttribute("logCode");
+	// 로그인 실패했을때 알림창 띄움
+	Object logCode = session.getAttribute("logCode");
+	if (logCode != null) {
+		int logCodeInt = (int) logCode;
+		if (logCodeInt == -1) {
+			%> <script>alert('로그인 실패');</script> <%
+			session.removeAttribute("logCode");
+		}
 	}
+	
 	%>
 
 	<jsp:include page="/headerNobutton"></jsp:include>

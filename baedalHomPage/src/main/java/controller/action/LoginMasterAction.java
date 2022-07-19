@@ -32,6 +32,7 @@ public class LoginMasterAction implements Action {
 		if (log != -1) {
 			System.out.println("로그인됨");
 			session.setAttribute("logCode", "m"+log); // "u1111" 형태로 저장이 된다
+			request.setAttribute("chkLogin", "1"); // 메인페이지에서 alert를 띄우는데 쓰인다
 			url = "index";
 		} else {
 			System.out.println("로그인 실패");
@@ -41,7 +42,7 @@ public class LoginMasterAction implements Action {
 
 		request.getRequestDispatcher(url).forward(request, response);
 
-		session.setAttribute("log", id); // 이건 어디에 쓰이지?
+		// session.setAttribute("log", id); // 이건 어디에 쓰이지?
 	}
 
 }

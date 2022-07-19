@@ -15,26 +15,28 @@ var options = { //지도를 생성할 때 필요한 기본 옵션
 	center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
 	level: 3 //지도의 레벨(확대, 축소 정도)
 };
-var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
-console.log("맵이 제대로 불러와지니?");
 
+//지도 생성 및 객체 리턴
+var map = new kakao.maps.Map(container, options);
+
+// 마커를 생성하는 함수
 function makeMarker(shopX, shopY, shopCode, shopPic, shopName, shopCategory, shopStar) {
 	console.log(shopX);
 	console.log(shopY);
 
-    var markerPosition  = new kakao.maps.LatLng(shopX, shopY); 
-    var marker = new kakao.maps.Marker({
-       position: markerPosition
-    });
+	var markerPosition = new kakao.maps.LatLng(shopX, shopY);
+	var marker = new kakao.maps.Marker({
+		position: markerPosition
+	});
 	marker.setMap(map);
-	
+
 	// 마커에 클릭이벤트를 등록합니다
 	kakao.maps.event.addListener(marker, 'click', function() {
 		addShopInfoInSection(shopCode, shopPic, shopName, shopCategory, shopStar);
 	});
 }
 
-
+// 오른쪽에 가게 정보를 올린다
 function addShopInfoInSection(shopCode, shopPic, shopName, shopCategory, shopStar) {
 	const contents = `
 				<article onclick='location.href="shop?shopCode=${shopCode}"'> 
@@ -47,12 +49,12 @@ function addShopInfoInSection(shopCode, shopPic, shopName, shopCategory, shopSta
 						<div id="shopStar"><h1>별점 : ${shopStar}</h1></div>
 					</div>
 				</article>`;
-				
+
 	const sectionSelector = document.getElementById('articleList');
 	sectionSelector.innerHTML = contents + sectionSelector.innerHTML;
 }
 
-
+// 마이페이지로 이동하는 함수
 function goToMyPage(logCode) {
 	let code = String(logCode);
 	if (code.charAt(0) === '-') {
@@ -75,6 +77,6 @@ function viewFavoriteList(logCode) {
 	} else {
 		location.href = './indexFavorite';
 	}
-	
-	
+
+
 }

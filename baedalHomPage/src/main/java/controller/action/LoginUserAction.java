@@ -31,13 +31,14 @@ public class LoginUserAction implements Action {
 		System.out.println("id : " + id);
 		System.out.println("pw : " + pw);
 
-		int log = dao.checkUserLogin(id, pw);
-		
+		int log = dao.checkUserLogin(id, pw); // 로그인에 성공하면 1, 실패하면 -1을 반환받는다
+
 		String url;
 		HttpSession session = request.getSession();
 		if (log != -1) {
 			System.out.println("로그인됨");
-			session.setAttribute("logCode", "u"+log); // "u1111" 형태로 저장이 된다
+			session.setAttribute("logCode", "u" + log); // "u1111" 형태로 저장이 된다
+			request.setAttribute("chkLogin", "1"); // 메인페이지에서 alert를 띄우는데 쓰인다
 			url = "index";
 		} else {
 			System.out.println("로그인 실패");
@@ -45,9 +46,6 @@ public class LoginUserAction implements Action {
 			url = "loginUser";
 		}
 		request.getRequestDispatcher(url).forward(request, response);
-
 	}
-	
-	
 
 }
