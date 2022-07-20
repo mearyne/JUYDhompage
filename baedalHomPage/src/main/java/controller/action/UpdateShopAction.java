@@ -19,7 +19,7 @@ public class UpdateShopAction implements Action{
 		double shopXTmp = Double.parseDouble(request.getParameter("shopX"));
 		double shopYTmp = Double.parseDouble(request.getParameter("shopY"));
 		int shopCode = Integer.parseInt(request.getParameter("shopCode"));
-		String chkDupl = request.getParameter("chkDupl"); // 새롭게 생성되는지 아니면 업데이트되는지 여부를 판단하는 변수
+		String chkDupl = request.getParameter("chkDupl"); // 가게가 새롭게 생성되는지 아니면 업데이트되는지 여부를 판단하는 변수
 		int masterCode = Integer.parseInt(request.getParameter("masterCode"));
 		
 		// test

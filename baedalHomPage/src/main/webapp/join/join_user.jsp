@@ -12,6 +12,17 @@
 
 </head>
 <body>
+	<%
+	// 회원가입 실패했을때 알림창 띄움
+	Object chkJoin = request.getAttribute("chkJoin");
+	if (chkJoin != null) {
+		String chkJoinString = (String) chkJoin;
+		if (chkJoinString.equals("false")) {
+			%> <script>alert('회원가입 실패');</script> <%
+		}
+	}
+	%>
+
 	<!-- header -->
 	<jsp:include page="/header"></jsp:include>
 	<form method="post" action="./Service" >

@@ -33,12 +33,13 @@ public class JoinUserAction implements Action {
 			
 			if (dao.chkDuplId(id) && dao.addUser(user)) {
 				url = "loginUser";
+				request.setAttribute("chkJoin", "true");
 			} else {
 				url = "joinUser";
+				request.setAttribute("chkJoin", "false");
 			}
-			// TODO 중복여부를 session에 올려서 join_user에서 그 값을 받아서 판단한다
-			
-			response.sendRedirect(url);
+
+			request.getRequestDispatcher(url).forward(request, response);
 			
 		} else
 			System.out.println("중복코드");

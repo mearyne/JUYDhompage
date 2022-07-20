@@ -19,6 +19,16 @@
 			System.out.println("logCode 삭제완료");
 		}
 	}
+	
+	// 회원가입 성공했을때 알림창 띄움
+	Object chkJoin = request.getAttribute("chkJoin");
+	if (chkJoin != null) {
+		String chkJoinString = (String) chkJoin;
+		if (chkJoinString.equals("true")) {
+			%> <script>alert('회원가입 성공');</script> <%
+		}
+	}
+	
 	%>
 
 	<jsp:include page="/headerNobutton"></jsp:include>
