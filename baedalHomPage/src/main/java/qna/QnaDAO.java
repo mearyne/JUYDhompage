@@ -24,9 +24,7 @@ public class QnaDAO {
 	private PreparedStatement pstmt = null;
 
 	public boolean addQnaData(QnaDTO dto) { // qna 추가
-		Date date = new Date(dto.getYear(),dto.getMonth()+1,dto.getDay());
-		Timestamp up_date = new Timestamp(date.getTime());
-		String sql = "insert into qna values(?,?,?,?,?)";
+		String sql = "insert into qna(no, userCode, title, contents) values(?,?,?,?)";
 
 		try {
 			conn = DBManager.getConnection("booking");
@@ -36,7 +34,6 @@ public class QnaDAO {
 			pstmt.setInt(2, dto.getUserCode());
 			pstmt.setString(3, dto.getTitle());
 			pstmt.setString(4, dto.getContents());
-			pstmt.setTimestamp(5,up_date);
 
 			boolean suc = pstmt.execute();
 			System.out.println(suc);
@@ -55,7 +52,6 @@ public class QnaDAO {
 	}
 
 	public ArrayList<QnaDTO> getQnaData() { //게시판 전체 목록 불러오기
-	
 		String sql = "select * from qna";
 		ArrayList<QnaDTO> list = new ArrayList<QnaDTO>();
 		try {
@@ -72,11 +68,10 @@ public class QnaDAO {
 				Timestamp up_date = rs.getTimestamp(5);
 
 				QnaDTO dto = new QnaDTO(no, userCode, title,contents,
-						up_date.getYear(),up_date.getMonth(),up_date.getDay());
+						up_date);
 				list.add(dto);
 
 				System.out.println("성공");
-
 			}
 
 		} catch (Exception e) {
@@ -86,5 +81,45 @@ public class QnaDAO {
 		}
 		return list;
 	}
-
+	
+	public QnaDTO getOneQna(int no) { //게시글 읽기
+		QnaDTO dto=new QnaDTO();
+		
+		String sql="select * from qna where no=?";
+		try {
+			conn = DBManager.getConnection("booking");
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, no);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				dto.setNo(rs.getInt(1));
+				dto.setUserCode(rs.getInt(2));
+				dto.setTitle(rs.getString(3));
+				dto.setContents(rs.getString(4));
+				dto.setUp_date(rs.getTimestamp(5));				
+			}
+			return dto;
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public int delete(int no) {
+		String SQL = "delete from qna WHERE no = ?";
+		try {
+			conn = DBManager.getConnection("booking");
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1,no);
+			return pstmt.executeUpdate(); // 삭제 성공시 1반환
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1; //데이터베이스 오류, 삭제 실패
+	}
 }
+
+

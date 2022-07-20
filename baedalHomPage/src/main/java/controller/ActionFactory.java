@@ -7,6 +7,8 @@ import controller.action.JoinMasterAction;
 import controller.action.JoinUserAction;
 import controller.action.LoginMasterAction;
 import controller.action.LoginUserAction;
+import controller.action.QnaDeleteAction;
+import controller.action.QnaWriteAction;
 import controller.action.logOutAction;
 
 public class ActionFactory {
@@ -34,6 +36,8 @@ public class ActionFactory {
 		else if (command.equals("changePwAction")) action = new ChangePwAction();
 		else if (command.equals("addfavo")) action = new AddFavoriteAction();
 		else if (command.equals("changePwMasterAction")) action = new ChangePwMasterAction();
+		else if (command.equals("QnaWriteAction")) action = new QnaWriteAction();
+		else if (command.equals("QnaDeleteAction")) action = new QnaDeleteAction();
 		
 		return action;
 	}

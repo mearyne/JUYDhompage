@@ -23,16 +23,19 @@
 	%>
 <body>
 	<jsp:include page="/module/header.jsp"></jsp:include>
-	<h1 style="text-align: center;"> QA 게시판 </h1>	
+	<h1 style="text-align: center;"> QA 게시판 </h1>
+		
+	<form action="../Service"  method="post">
+	<input type="hidden" name="command" value="QnaWriteAction">	
 	
-	<input type="button" value="글쓰기">
+	<input type="button" value="글쓰기" onclick="location.href='Qnawrite'">
 	
 	<table>
 		<thead>
 			<tr id="firstTr">
 				<td id="no"> no </td>
 				<td id="title"> title </td>
-
+				<td id="name"> name </td>
 				<td id="date"> date </td>
 			</tr>
 		</thead>
@@ -46,17 +49,21 @@
 					int userCode= udto.getUserCode();
 					String title = dto.getTitle();
 					String contents=dto.getContents();
+					String userName = udto.getUserName();
+					String up_date=String.valueOf(dto.getUp_date());
 				%>
 				<tr>
 				<td><%=no %></td>
-				<td><%=title %></td>
-				<td><%=dto.getYear()+1900%>-<%=dto.getMonth()+1%>-<%=dto.getDay()%></td>
+				<td onclick='location.href=`./QAview.jsp?no=<%=no%>`'><%=title %></td>
+				<td><%=userName%></td>
+				<td><%=up_date%></td>
 				</tr>
 				<%
 				}
 				%>
 		</tbody>
 	</table>
+	</form>
 	<jsp:include page="/module/footer.jsp"></jsp:include>
 </body>
 </html>

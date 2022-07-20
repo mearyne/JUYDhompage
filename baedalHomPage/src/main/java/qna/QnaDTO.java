@@ -1,22 +1,34 @@
 package qna;
 
+import java.sql.Timestamp;
+
 public class QnaDTO {
 
 	private int no;
 	private int userCode;
 	private String title;
 	private String contents;
-	private int year,month,day;
+	private Timestamp up_date;
 	
-	public QnaDTO(int no, int userCode, String title, String contents, int year, int month, int day) {
+	public QnaDTO(int no, int userCode, String title, String contents,Timestamp up_date) {
 		super();
 		this.no = no;
 		this.userCode = userCode;
 		this.title = title;
 		this.contents = contents;
-		this.year = year;
-		this.month = month;
-		this.day = day;
+		this.up_date=up_date;
+	}
+
+	public QnaDTO(int no, int userCode, String title, String contents) {
+		super();
+		this.no = no;
+		this.userCode = userCode;
+		this.title = title;
+		this.contents = contents;
+	}
+
+	public QnaDTO() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public int getNo() {
@@ -51,28 +63,14 @@ public class QnaDTO {
 		this.contents = contents;
 	}
 
-	public int getYear() {
-		return year;
+	public Timestamp getUp_date() {
+		return up_date;
 	}
 
-	public void setYear(int year) {
-		this.year = year;
+	public void setUp_date(Timestamp up_date) {
+		this.up_date = up_date;
 	}
 
-	public int getMonth() {
-		return month;
-	}
-
-	public void setMonth(int month) {
-		this.month = month;
-	}
-
-	public int getDay() {
-		return day;
-	}
-
-	public void setDay(int day) {
-		this.day = day;
-	}
+	
 	
 }

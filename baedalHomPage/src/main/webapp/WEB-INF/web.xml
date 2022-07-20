@@ -186,6 +186,36 @@
 		<servlet-name>indexFavorite</servlet-name>
 		<url-pattern>/indexFavorite</url-pattern>
 	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>QA</servlet-name>
+		<jsp-file>/QA/QA.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>QA</servlet-name>
+		<url-pattern>/QA</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>QAview</servlet-name>
+		<jsp-file>/QA/QAview.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>QAview</servlet-name>
+		<url-pattern>/QAview</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>Qnawrite</servlet-name>
+		<jsp-file>../Qnawrite.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Qnawrite</servlet-name>
+		<url-pattern>/Qnawrite</url-pattern>
+	</servlet-mapping>
+	
+	
+	
+	
 	
 
 
