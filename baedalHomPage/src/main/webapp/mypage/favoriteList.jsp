@@ -11,6 +11,32 @@
 <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <style>
+		img {
+			height: 150px;
+		    width: 150px;
+		    object-fit: contain;
+		}
+		
+		#pagedetail {
+			display: flex;
+		}
+		
+		article {
+			background-color: grey;
+		}
+		
+		article.contentsList {
+			display: flex;
+		}
+		
+		input {
+			background: white;
+		}
+	
+	</style>
+    
     <link rel="stylesheet" href="./css/mypage.css">
 <title>favoriteShop list</title>
 </head>
@@ -41,26 +67,29 @@
            <a class="userpage" id="reviewlist" href="review">리뷰 목록</a>
         </div>
           <div class="pagedetail"> 
-          <%for(int i=0; i<favdata.size(); i++){
-        	  favoriteDTO fav = favdata.get(i);
-        	  shopDTO shop = sdao.getshopData(fav.getShopCode());
-        	  
-        	  String shopname = shop.getShopName();
-        	  String shopadd = shop.getShopAddress();
-        	  String shopcategory = shop.getShopCategory();
-        	  String shopcontact = shop.getShopPhone();        	  
-        	  %>
-			<article id="favorite<%=i+1%>">
-			<div id="shopname"><%=shopname %></div>
-			<div id="shopadd"><%=shopadd %></div>
-			<div id="shopcategory"><%=shopcategory %></div>
-			<div id="shopcontact"><%=shopcontact %></div>
-			
-			
-			</article>
-          <% 
-          }
-          %>
+			  <h1 style="text-align: center;"> 찜 목록 </h1>
+	          <%for(int i=0; i<favdata.size(); i++){
+	        	  favoriteDTO fav = favdata.get(i);
+	        	  shopDTO shop = sdao.getshopData(fav.getShopCode());
+	        	  
+	        	  String shopname = shop.getShopName();
+	        	  String shopadd = shop.getShopAddress();
+	        	  String shopcategory = shop.getShopCategory();
+	        	  String shopcontact = shop.getShopPhone();
+	        	  String shoppic = shop.getShopPic();
+	        	  
+	        	  %>
+				<article id="order<%=i+1 %>" class="contentsList" onclick="location.href='shop?shopCode=<%=shop.getShopCode() %>'">
+					<div id="shoppic"><img src="<%=shoppic %>" style="margin: 10px;"></div>
+					<div style="margin: 30px;">
+						<div id="shopname"><%=shopname %></div>
+						<div id="shopadd"><%=shopadd %></div>
+						<div id="shopcontact"><%=shopcontact %></div>
+					</div>
+				</article>
+	          <% 
+	          }
+	          %>
         </div>
 	</section>
 

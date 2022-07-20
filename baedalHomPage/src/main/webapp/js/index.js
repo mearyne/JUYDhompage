@@ -34,6 +34,7 @@ function makeMarker(shopX, shopY, shopCode, shopPic, shopName, shopCategory, sho
 	kakao.maps.event.addListener(marker, 'click', function() {
 		addShopInfoInSection(shopCode, shopPic, shopName, shopCategory, shopStar);
 	});
+
 }
 
 // 오른쪽에 가게 정보를 올린다
@@ -41,7 +42,7 @@ function addShopInfoInSection(shopCode, shopPic, shopName, shopCategory, shopSta
 	const contents = `
 				<article onclick='location.href="shop?shopCode=${shopCode}"'> 
 					<div class="articleBlock" id="subArticle1">
-						<div id="menuPicture1"><img src="${shopPic}"></div>
+						<img src="${shopPic}">
 					</div>
 					<div class="articleBlock" id="subArticle2">
 						<div id="shopName"><h1>[${shopName}]</h1></div>

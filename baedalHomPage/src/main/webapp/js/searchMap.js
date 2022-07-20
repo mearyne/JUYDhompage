@@ -29,7 +29,7 @@ function searchPlaces() {
 function placesSearchCB(data, status, pagination) {
 	if (status === kakao.maps.services.Status.OK) {
 
-		console.log(data);
+		console.log(data); // 실제 데이터가 표시되어 있다
 		// 정상적으로 검색이 완료됐으면
 		// 검색 목록과 마커를 표출합니다
 		displayPlaces(data);
@@ -51,7 +51,7 @@ function placesSearchCB(data, status, pagination) {
 }
 
 // 검색 결과 목록과 마커를 표출하는 함수입니다
-function displayPlaces(places) {
+function displayPlaces(places) { // places는 검색한 데이터 배열이다
 
 	var listEl = document.getElementById('placesList'), menuEl = document
 		.getElementById('menu_wrap'), fragment = document
@@ -64,10 +64,11 @@ function displayPlaces(places) {
 	removeMarker();
 
 	for (var i = 0; i < 5; i++) {
+		// 여기에 데이터를 가져올 수 있으면 승리!
 
 		// 마커를 생성하고 지도에 표시합니다
 		var placePosition = new kakao.maps.LatLng(places[i].y,
-			places[i].x), marker = addMarker(placePosition, i), itemEl = getListItem(
+			places[i].x), marker = addMarker(placePosition, i, places[i]), itemEl = getListItem(
 				i, places[i]); // 검색 결과 항목 Element를 생성합니다
 
 		// 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
@@ -135,7 +136,7 @@ function getListItem(index, places) {
 }
 
 // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
-function addMarker(position, idx, title) {
+function addMarker(position, idx, place) {
 	var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
 		imageSize = new kakao.maps.Size(36, 37), // 마커 이미지의 크기
 		imgOptions = {
@@ -152,8 +153,34 @@ function addMarker(position, idx, title) {
 	marker.setMap(map); // 지도 위에 마커를 표출합니다
 	markers.push(marker); // 배열에 생성된 마커를 추가합니다
 
+	// 마커에 클릭이벤트를 등록합니다
+	kakao.maps.event.addListener(marker, 'click', function() {
+		addShopInfoInSections("", place.place_name, place.category_name, place.phone, place.road_address_name);
+	});
+	console.log(place.place_name);
+
 	return marker;
 }
+
+// 눌렀을때 오른쪽 화면에 띄우게 한다
+function addShopInfoInSections(shopPic, shopName, shopCategory, shopPhone, shopAddress) {
+	const contents = `
+				<article> 
+					<div class="articleBlock" id="subArticle1">
+						<div id="menuPicture1"><img src="https://bit.ly/3zkrvw3"></div>
+					</div>
+					<div class="articleBlock" id="subArticle2">
+						<div id="shopName"><h1>[${shopName}]</h1></div>
+						<div id="shopCategory"><h3>${shopCategory}</h3></div>
+						<div id="shopPhone"><h3>${shopPhone}</h3></div>
+						<div id="shopPhone"><h3>${shopAddress}</h3></div>
+					</div>
+				</article>`;
+
+	const sectionSelector = document.getElementById('articleList');
+	sectionSelector.innerHTML = contents + sectionSelector.innerHTML;
+}
+
 
 // 지도 위에 표시되고 있는 마커를 모두 제거합니다
 function removeMarker() {

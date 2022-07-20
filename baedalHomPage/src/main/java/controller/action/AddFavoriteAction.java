@@ -24,14 +24,21 @@ public class AddFavoriteAction implements Action {
 		int favoriteCode = dao.favoritesize()+1;
 		int userCode = Integer.parseInt(request.getParameter("usercode")) ;
 		int shopCode = Integer.parseInt(request.getParameter("shopcode")) ;
+		
 		dto = new favoriteDTO(favoriteCode, userCode, shopCode);
-		if(!dao.chkfav(shopCode, userCode)) { //true->false??
+		
+		int chkfavo = dao.chkfav(shopCode, userCode); // 등록에 실패하면 1, 등록에 성공하면 -1
+		
+		if(chkfavo != 1) { // 이미 찜 상태가 아니다
 			dao.addfavorite(dto);
 			System.out.println("찜 추가!");
-		}else {
+		} else {
 			System.out.println("이미 있습니다.");
 		}
-	
+		// test 
+		System.out.println("chkfavo : " + chkfavo);
+		
+		request.setAttribute("chkfavo", chkfavo);
 		request.getRequestDispatcher("./shop?shopCode="+shopCode).forward(request, response);
 		
 	}

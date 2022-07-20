@@ -10,6 +10,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+
 <meta charset="UTF-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <link rel="stylesheet" href="./css/shopdetail.css">
@@ -63,6 +65,16 @@
 	button.buttonMenu {
 		font-size: 23px;
 	}
+	
+	.buttonMenu {
+	    width: 232.5px;
+	    height: 48px;
+	    background: white;
+	    color: black;
+	    border: solid 1px;
+	    font-size: 23px;
+	}
+	
 	.submitMenu{
 	width: 232.5px;
 	    height: 48px;
@@ -120,23 +132,50 @@
 </head>
 <body>
 	<%
-	// 가게 상세페이지 입니다.
+	// 예약하기 업데이트 성공했는지 여부에 따라서 알림창을 띄운다
+	Object chkorderObject = request.getAttribute("chkorder");
+	if (chkorderObject != null) {
+		int chkorder = (int) chkorderObject;
+		if (chkorder == 1) {
+			%> <script> alert('예약하기 성공');</script> <%
+		} else if (chkorder == -1) {
+			%> <script> alert('예약하기 실패');</script> <%
+		}
+	}
 	
+	// 찜하기 업데이트에 성공했는지 실패했는지에 따라서 알림창을 띄운다
+	Object chkfavoObject = request.getAttribute("chkfavo");
+	System.out.println("chkfavo : " + chkfavoObject);
+	if (chkfavoObject != null) {
+		int chkfavo = (int) chkfavoObject;
+		if (chkfavo != 1) {
+			%> <script> alert('찜 성공');</script> <%
+		} else if (chkfavo == -1) {
+			%> <script> alert('이미 찜 상태입니다');</script> <%
+		}
+		
+	}
+		
+	// 가게 코드를 가져옴	
 	int shopCode = Integer.parseInt(request.getParameter("shopCode"));
+	
+	// 가게 데이터를 가져옴
 	shopDAO shopdao = shopDAO.getInstance();
 	shopDTO shopInfo = shopdao.getshopData(shopCode);
 	menuDAO menudao = menuDAO.getInstance();
 	reviewDAO reviewdao= reviewDAO.getInstance();
 	
-	
+	// 유저 코드를 가져옴
 	int userCode =-1;
-	String user= (String)session.getAttribute("logCode");
+	String user= (String) session.getAttribute("logCode");
 	System.out.println("user :"+user);
+	
 	if(user!=null){
-	String tempuser=user.substring(1);
-	userCode = Integer.parseInt(tempuser);
-	System.out.println("!!!logCode ="+ tempuser);
+		String tempuser=user.substring(1);
+		userCode = Integer.parseInt(tempuser);
+		System.out.println("!!!logCode ="+ tempuser);
 	} 
+	
 	System.out.println("userCode=" + userCode);
 	System.out.println("!!!user ="+ user);
 
@@ -148,14 +187,16 @@
 
 	<jsp:include page="/module/header.jsp"></jsp:include>
 	<aside></aside>
+	
 	<section>
-	<form action="./Service" method="post" >
-		<input type="hidden" name="command" value="addfavo">
-		<input type="hidden" value="<%=userCode %>" name="usercode">
-		<input type="hidden" value="<%=shopCode %>" name="shopcode">
-		<input type="hidden" value="<%=user %>" name="user" class="favochk">
+		<!-- form 구간 -->
+		<form action="./Service" method="post" >
+			<input type="hidden" name="command" value="addfavo">
+			<input type="hidden" value="<%=userCode %>" name="usercode">
+			<input type="hidden" value="<%=shopCode %>" name="shopcode">
+			<input type="hidden" value="<%=user %>" name="user" class="favochk">
 			<div id="top">
-				<div id="shopPic"> <img id="shopPicture" src="<%=shopInfo.getShopPic()%>" ></div>
+				<div id="shopPic"><img id="shopPicture" src="<%=shopInfo.getShopPic()%>" ></div>
 				<div id="shopInfo">
 					<div><h1>가게이름 : <%=shopInfo.getShopName() %></h1></div>
 					<div><h3>카테고리 : <%=shopInfo.getShopCategory() %></h3></div>
@@ -164,12 +205,12 @@
 					<div><h3>별점 : <%=shopInfo.getShopStar() %>점</h3></div>
 					<div><h3>리뷰 숫자 : <%=shopInfo.getReviewNum() %>개</h3></div>
 					<br> <input type="button" class="buttonMenu" value="예약하기" onclick="location.href='./booking?shopCode=<%=shopCode%>'"><br>
-					<!-- <button class="buttonMenu" id="favoritebutton" onclick="chkuser(form)">찜</button> -->
 					<input type="submit" class="submitMenu" value="찜하기">
 				
 				</div>
 			</div>
-	</form>
+		</form>
+		
 		<div id="bottom">
 			<div>
 				<hr><br>
@@ -204,7 +245,7 @@
 					<%
 				}
 				%>
-
+	
 			</div>
 			<hr style="height:5px; background-color:grey;">
 			<div id="reviewList"> 
@@ -215,7 +256,7 @@
 					String reviewPic = reviewdto.get(i).getReviewPicture();
 					
 					System.out.println(reviewPic);
-
+	
 					%>
 					<br><hr>
 						<div id="review<%=i+1%>" class="reviewBlock">
@@ -231,7 +272,6 @@
 			
 			</div>
 		</div>
-
 
 	</section>
 	<aside></aside>

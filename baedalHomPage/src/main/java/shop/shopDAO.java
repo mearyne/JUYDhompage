@@ -197,6 +197,26 @@ public class shopDAO {
 		}
 
 	}
+	
+	public void createShopInfoMaster(shopDTO shopDTO) {
+		String sql = "update master set shopCode=?  where masterCode=?";
+		try {
+			conn = DBManager.getConnection("booking");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, shopDTO.getShopCode());
+			pstmt.setInt(2, shopDTO.getMasterCode());
+
+			pstmt.execute();
+
+			System.out.println("master의 상점코드 업데이트 성공");
+		} catch (Exception e) {
+			System.out.println("master의 상점코드 업데이트 실패");
+			e.printStackTrace();
+
+		}
+		
+		
+	}
 
 	public void createShopDTO(shopDTO shopDTO) {
 		String sql = "insert into shop values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";

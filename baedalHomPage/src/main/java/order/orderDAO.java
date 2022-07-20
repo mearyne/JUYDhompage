@@ -23,7 +23,7 @@ public class orderDAO {
 	private ResultSet rs = null;
 	private PreparedStatement pstmt = null;
 
-	public boolean addOrder(orderDTO order) { // 유저를 데이터베이스에 추가한다
+	public int addOrder(orderDTO order) { // 유저를 데이터베이스에 추가한다
 		int year = order.getYear();
 		int month = order.getMonth();
 		int day = order.getDay();
@@ -46,7 +46,7 @@ public class orderDAO {
 			if (!suc) {
 				System.out.println("insert 완료");
 				pstmt = null;
-				return true;
+				return 1;
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -54,7 +54,7 @@ public class orderDAO {
 			pstmt = null;
 			e.printStackTrace();
 		}
-		return false;
+		return -1;
 	}
 
 	public int ordersize() {

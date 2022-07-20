@@ -49,6 +49,7 @@ public class UpdateShopAction implements Action{
 		} else {
 			shopDTO shopDTO = new shopDTO(shopCode, masterCode, shopName, shopCategory, address, shopPic, shopPhone, shopContents, 0, 0, shopX, shopY);
 			shopdao.createShopDTO(shopDTO);
+			shopdao.createShopInfoMaster(shopDTO);
 		}
 		
 		

@@ -35,7 +35,7 @@
 
 	<section class="mypage">
 		<div class="pagelist">
-			<a class="userpage" id="mypage" href="mypage"><img src= "https://icons.veryicon.com/png/o/miscellaneous/frozenui/info-92.png" width=40px; height=40px;>내 정보</a>
+			<a class="userpage" id="mypage" href="mypage_master"><img src= "https://icons.veryicon.com/png/o/miscellaneous/frozenui/info-92.png" width=40px; height=40px;>내 정보</a>
        		<a class="userpage" id="updateShop" href="updateShop">가게주소 변경하기</a>
            <a class="userpage" id="orederlist" href="menuView"><img src="https://img.icons8.com/dotty/12x/cash-receipt.png" width=40px; height=40px;>메뉴 보기</a>
         </div>

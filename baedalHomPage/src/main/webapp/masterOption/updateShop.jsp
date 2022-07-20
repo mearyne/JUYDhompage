@@ -16,6 +16,12 @@
    .hAddr {position:absolute;left:10px;top:10px;border-radius: 2px;background:#fff;background:rgba(255,255,255,0.8);z-index:1;padding:5px;}
    #centerAddr {display:block;margin-top:2px;font-weight: normal;}
    .bAddr {padding:5px;text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
+   
+   div#main {
+   		display: flex;
+   		flex-direction: column;
+   		align-items: center;
+   }
 </style>
 
 <title>Insert title here</title>
@@ -72,41 +78,41 @@
 
 	<jsp:include page="/module/header.jsp"></jsp:include>
 	<aside></aside>	
+	<div id="main">
+		<h1 style="text-align: center;">가게 정보 수정하기</h1>
+		<h3>상점의 위치를 클릭하세요</h3>
+		<div id="MapBlock">
+			<div class="map_wrap">
+			    <div id="map" style="width:350px;height:350px;"></div>
+			    <div class="hAddr">
+			        <span class="title">지도중심기준 행정동 주소정보</span>
+			        <span id="centerAddr"></span>
+			    </div>
+			</div>
+		</div>
 	
-	<h1 style="text-align: center;">가게 위치 수정하기</h1>
-	<h3>상점의 위치를 클릭하세요</h3>
-	
-	<div id="MapBlock">
-		<div class="map_wrap">
-		    <div id="map" style="width:350px;height:350px;"></div>
-		    <div class="hAddr">
-		        <span class="title">지도중심기준 행정동 주소정보</span>
-		        <span id="centerAddr"></span>
-		    </div>
+		<div id="buttom">
+			<form method="post" action="./Service">
+			
+					<!-- 여기에 좌표, 주소가 표시된다 -->
+					<div id="clickAddress"></div>
+					<div id="clickLatlng"></div>
+					<input type="hidden" name="command" value="updateShopAction">
+					<input type="hidden" name="shopCode" value="<%=shopCode %>">
+					<input type="hidden" name="masterCode" value="<%=masterCode %>">
+					<input type="hidden" name="chkDupl" value="<%=chkDupl %>">
+					
+					가게 이름 : <input type="text" name="shopName" value="<%=shopName %>" required><br>
+					카테고리 : <input type="text" name="shopCategory" value="<%=shopCategory %>" required><br>
+					사진 링크 : <input type="text" name="shopPic" value="<%=shopPic %>" required><br>
+					가게 전화번호 : <input type="text" name="shopPhone" value="<%=shopPhone %>" required><br>
+					가게 설명 : <input type="text" name="shopContents" value="<%=shopContents %>" required><br>
+			
+				<input type="button" value="취소" onclick="location.href=`index`">
+				<input type="submit" value="수정하기" onclick="alert('위치가 수정되었습니다')">
+			</form>
 		</div>
 	</div>
-	
-	<div id="buttom">
-		<form method="post" action="./Service">
-			<!-- 여기에 좌표, 주소가 표시된다 -->
-			<div id="clickAddress"></div>
-			<div id="clickLatlng"></div>
-			<input type="hidden" name="command" value="updateShopAction">
-			<input type="hidden" name="shopCode" value="<%=shopCode %>">
-			<input type="hidden" name="masterCode" value="<%=masterCode %>">
-			<input type="hidden" name="chkDupl" value="<%=chkDupl %>">
-			
-			가게 이름 : <input type="text" name="shopName" value="<%=shopName %>" required><br>
-			카테고리 : <input type="text" name="shopCategory" value="<%=shopCategory %>" required><br>
-			사진 링크 : <input type="text" name="shopPic" value="<%=shopPic %>" required><br>
-			가게 전화번호 : <input type="text" name="shopPhone" value="<%=shopPhone %>" required><br>
-			가게 설명 : <input type="text" name="shopContents" value="<%=shopContents %>" required><br>
-
-			<input type="button" value="취소" onclick="location.href=`index`">
-			<input type="submit" value="수정하기" onclick="alert('위치가 수정되었습니다')">
-		</form>
-	</div>
-	
 	<aside></aside>
 	<jsp:include page="/module/footer.jsp"></jsp:include>
 

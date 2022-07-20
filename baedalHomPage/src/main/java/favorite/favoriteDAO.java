@@ -19,14 +19,14 @@ public class favoriteDAO {
 	private ResultSet rs = null;
 	private PreparedStatement pstmt = null;
 
-	public favoriteDTO getFavorite() { //찜목록 전체 불러오기
+	public favoriteDTO getFavorite() { // 찜목록 전체 불러오기
 		String sql = "select * from favorite";
 		try {
 			conn = DBManager.getConnection("booking");
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			System.out.println(rs);
-			
+
 			while (rs.next()) {
 				int favoriteCode = rs.getInt(1);
 				int userCode = rs.getInt(2);
@@ -34,9 +34,8 @@ public class favoriteDAO {
 				System.out.println(favoriteCode);
 				System.out.println(userCode);
 				System.out.println(shopCode);
-				
 
-				favoriteDTO favorList = new favoriteDTO(favoriteCode,userCode,shopCode);
+				favoriteDTO favorList = new favoriteDTO(favoriteCode, userCode, shopCode);
 				return favorList;
 			}
 			System.out.println("찜 불러오기 성공");
@@ -49,9 +48,8 @@ public class favoriteDAO {
 		return null;
 
 	}
-	
-	
-	public boolean chkfav(int shopcode, int usercode) { // 찜목록이 이미 추가되어있는지 확인
+
+	public int chkfav(int shopcode, int usercode) { // 찜목록이 이미 추가되어있는지 확인
 		String sql = "select * from favorite where shopCode =? and userCode=?";
 		try {
 			conn = DBManager.getConnection("booking");
@@ -59,37 +57,23 @@ public class favoriteDAO {
 			pstmt.setInt(1, shopcode);
 			pstmt.setInt(2, usercode);
 			rs = pstmt.executeQuery();
-			if(rs.next()) {
-			int Scode=0;
-			Scode=rs.getInt(1);
-			System.out.println("Scode ="+Scode);
-			if(Scode!=0) {
-				System.out.println("찜 추가가능");
-				return true;
+			if (rs.next()) {
+				int Scode = -2;
+				Scode = rs.getInt(1);
+				System.out.println("Scode =" + Scode);
+				if (Scode != -2) {
+					System.out.println("찜 추가가능");
+					return 1;
+				}
 			}
-			}
-			
-//			while (rs.next()) {
-//				int favoriteCode = rs.getInt(1);
-//				int userCode = rs.getInt(2);
-//				int shopCode = rs.getInt(3);
-//				System.out.println(favoriteCode);
-//				System.out.println(userCode);
-//				System.out.println(shopCode);
-//				
-//
-//				favoriteDTO favorList = new favoriteDTO(favoriteCode,userCode,shopCode);
-//				return true;
-//			}
 
 		} catch (Exception e) {
-			// TODO: handle exception
 			System.out.println("이미 찜상태");
 			e.printStackTrace();
 		}
-		return false;
+		return -1;
 	}
-	
+
 	public boolean addfavorite(favoriteDTO fav) {
 		String sql = "insert into favorite values(?,?,?)"; // sql은 인덱스 1부터 시작
 		try {
@@ -98,7 +82,7 @@ public class favoriteDAO {
 			pstmt.setInt(1, fav.getFavoriteCode());
 			pstmt.setInt(2, fav.getUserCode());
 			pstmt.setInt(3, fav.getShopCode());
-			
+
 			boolean suc = pstmt.execute();
 			System.out.println(suc);
 			// pstmt (쿼리 날릴) 준비 완료
@@ -115,15 +99,16 @@ public class favoriteDAO {
 		}
 		return false;
 	}
+
 	public int favoritesize() {
 		String sql = "select * from favorite";
-		int size =0;
+		int size = 0;
 		try {
 			conn = DBManager.getConnection("booking");
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			System.out.println(rs);
-			
+
 			while (rs.next()) {
 				size++;
 			}
@@ -137,34 +122,35 @@ public class favoriteDAO {
 		}
 		return size;
 	}
-	public ArrayList<favoriteDTO> getuserfavorite(int code){
+
+	public ArrayList<favoriteDTO> getuserfavorite(int code) {
 		String sql = "select * from favorite where userCode=?";
 		ArrayList<favoriteDTO> favoriteD = new ArrayList<favoriteDTO>();
 		try {
 			conn = DBManager.getConnection("booking");
-			pstmt=conn.prepareStatement(sql);
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, code);
-			rs=pstmt.executeQuery();
+			rs = pstmt.executeQuery();
 			System.out.println(rs);
-			
-			while(rs.next()) {
-				int favoCode= rs.getInt(1);
-				int userCode =rs.getInt(2);
-				int shopCode= rs.getInt(3);
-				
-				favoriteDTO dto = new favoriteDTO(favoCode,userCode,shopCode);
-				favoriteD.add(dto);			
+
+			while (rs.next()) {
+				int favoCode = rs.getInt(1);
+				int userCode = rs.getInt(2);
+				int shopCode = rs.getInt(3);
+
+				favoriteDTO dto = new favoriteDTO(favoCode, userCode, shopCode);
+				favoriteD.add(dto);
 			}
 			System.out.println("성공");
 			return favoriteD;
-			
+
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println("실패");
 			e.printStackTrace();
-		}		
+		}
 		return null;
-		
+
 	}
 
 }

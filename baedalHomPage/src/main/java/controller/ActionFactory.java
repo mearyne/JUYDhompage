@@ -1,9 +1,11 @@
 package controller;
 
 import controller.action.AddFavoriteAction;
+import controller.action.AddMenuAction;
 import controller.action.AddOrderAction;
 import controller.action.ChangePwAction;
 import controller.action.ChangePwMasterAction;
+import controller.action.DeleteMenuAction;
 import controller.action.JoinMasterAction;
 import controller.action.JoinUserAction;
 import controller.action.LoginMasterAction;
@@ -38,6 +40,8 @@ public class ActionFactory {
 		else if (command.equals("changePwMasterAction")) action = new ChangePwMasterAction();
 		else if (command.equals("updateShopAction")) action = new UpdateShopAction();
 		else if (command.equals("addorder")) action = new AddOrderAction();
+		else if (command.equals("delMenu")) action = new DeleteMenuAction();
+		else if (command.equals("addMenu")) action = new AddMenuAction();
 		return action;
 	}
 	

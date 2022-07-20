@@ -36,12 +36,14 @@ public class AddOrderAction implements Action {
 		
 		
 		dto = new orderDTO(code, userCode, shopCode, year,month,day);
-		if(dao.addOrder(dto)) {
+		int chkorder = dao.addOrder(dto); // 추가를 성공하면 1, 실패하면 -1 반환
+		
+		if(chkorder == 1) {
 			System.out.println("주문 완료");
 		}else
 			System.out.println("주문 실패");
 		
-		
+		request.setAttribute("chkorder", chkorder);
 		request.getRequestDispatcher("./shop?shopCode="+shopCode).forward(request, response);
 		
 		

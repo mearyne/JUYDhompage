@@ -55,6 +55,75 @@ public class menuDAO {
 			
 		}
 		return null;
+	}
+	public boolean deletemunu(int menucode) {
+		String sql = "delete from menu where menuCode =?";
+		try {
+			conn=DBManager.getConnection("booking");
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1,menucode);
+			int chk =pstmt.executeUpdate();
+			if(chk == 1) {
+				System.out.println("삭제 완료");
+				return true;
+			}
+		}catch (Exception e) {
+			System.out.println("삭제 실패");
+			// TODO: handle exception
+		}
+		return false;
+	}
+	
+	public boolean addmenu(menuDTO dto) {
+		String sql = "insert into menu values (?,?,?,?,?,?)";
+		try {
+			conn=DBManager.getConnection("booking");
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, dto.getMenuCode());
+			pstmt.setInt(2, dto.getShopCode());
+			pstmt.setInt(3, dto.getMenuPrice());
+			pstmt.setString(4, dto.getMenuName());
+			pstmt.setString(5, dto.getMenuPicture());
+			pstmt.setString(6, dto.getMenuContents());
+			boolean chk = pstmt.execute();
+			
+			if(!chk) {
+				System.out.println("메뉴 추가완료");
+				pstmt = null;
+				return true;
+			}
+			
+		}catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("메뉴 추가실패");
+			pstmt = null;
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	public int menusize() {
+		String sql = "select * from menu";
+		int size = 1;
+		try {
+			conn = DBManager.getConnection("booking");
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			System.out.println(rs);
 
+			while (rs.next()) {
+				int menu =rs.getInt(1);
+				if(menu!=size)
+					return size;
+				size++;
+			}
+			System.out.println("사이즈 확인 성공");
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("사이즈 확인 실패");
+			e.printStackTrace();
+		}
+		return size;
 	}
 }

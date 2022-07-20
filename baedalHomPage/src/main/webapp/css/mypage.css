@@ -149,7 +149,7 @@ input[type="text"] {
 article {
 	width: 99%;
 	height: 20%;
-	background-color: grey;
+	background-color: white;
 	border: solid 2px grey;
 	border-radius: 12px;
 	/* 여백 주기 */
