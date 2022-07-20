@@ -36,10 +36,8 @@
 	<section class="mypage">
 		<div class="pagelist">
 			<a class="userpage" id="mypage" href="mypage"><img src= "https://icons.veryicon.com/png/o/miscellaneous/frozenui/info-92.png" width=40px; height=40px;>내 정보</a>
-           <a class="userpage" id="orederlist" href="ordered"><img src="https://img.icons8.com/dotty/12x/cash-receipt.png" width=40px; height=40px;>주문 목록</a>
-           <a class="userpage" id="favlistlist" href="favoriteList"><img src="https://media.istockphoto.com/vectors/click-here-the-button-vector-id1172207434?k=20&m=1172207434&s=612x612&w=0&h=7AjuglgvFgLffL3F1SO67XWf_zycRjCe5DJvdayQFrc=" width=40px; height=40px;>찜 목록</a>
-           <a class="userpage" id="reviewlist" href="review" > <img src="https://www.pngkey.com/png/full/288-2884257_free-food-clip-art-black-and-white.png" width=40px; height=40px;>리뷰 목록</a>
        		<a class="userpage" id="updateShop" href="updateShop">가게주소 변경하기</a>
+           <a class="userpage" id="orederlist" href="menuView"><img src="https://img.icons8.com/dotty/12x/cash-receipt.png" width=40px; height=40px;>메뉴 보기</a>
         </div>
         <div class="pagedetail"> 
         <div style="text-align : center;">

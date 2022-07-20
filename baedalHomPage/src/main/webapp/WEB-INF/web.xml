@@ -213,4 +213,22 @@
 		<servlet-name>updateShop</servlet-name>
 		<url-pattern>/updateShop</url-pattern>
 	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>menuView</servlet-name>
+		<jsp-file>/menu/menuView.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>menuView</servlet-name>
+		<url-pattern>/menuView</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>addMenu</servlet-name>
+		<jsp-file>/menu/addMenu.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>addMenu</servlet-name>
+		<url-pattern>/addMenu</url-pattern>
+	</servlet-mapping>
 </web-app>
