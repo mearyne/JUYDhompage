@@ -82,7 +82,9 @@ public class userDAO {
 	public userDTO getData(int code) {
 		String sql = "select * from user where userCode =?";
 		try {
-			conn = DBManager.getConnection("booking");
+			if (conn == null) {
+				conn = DBManager.getConnection("booking");
+			}
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, code);
 			rs = pstmt.executeQuery();
@@ -94,12 +96,14 @@ public class userDAO {
 				String id = rs.getString(3);
 				String pw = rs.getString(4);
 				String con = rs.getString(5);
-				System.out.println(no);
-				System.out.println(name);
-				System.out.println(id);
-				System.out.println(pw);
-				System.out.println(con);
+//				System.out.println(no);
+//				System.out.println(name);
+//				System.out.println(id);
+//				System.out.println(pw);
+//				System.out.println(con);
 				userDTO dto = new userDTO(no, name, id, pw, con);
+				conn = null;
+
 				return dto;
 			}
 
@@ -110,6 +114,9 @@ public class userDAO {
 			System.out.println("실패");
 			e.printStackTrace();
 
+		} finally {
+			conn = null;
+			pstmt = null;
 		}
 		return null;
 	}

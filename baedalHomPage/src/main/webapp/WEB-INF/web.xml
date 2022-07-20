@@ -231,4 +231,23 @@
 		<servlet-name>addMenu</servlet-name>
 		<url-pattern>/addMenu</url-pattern>
 	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>QAview</servlet-name>
+		<jsp-file>/QA/QAview.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>QAview</servlet-name>
+		<url-pattern>/QAview</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>QnaWrite</servlet-name>
+		<jsp-file>/QA/Qnawrite.jsp</jsp-file>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>QnaWrite</servlet-name>
+		<url-pattern>/QnaWrite</url-pattern>
+	</servlet-mapping>
+	
 </web-app>

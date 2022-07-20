@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+body{
+	
+	text-align: center;
+}
+
+table{
+	text-align: center;
+	border:1px solid #444444;
+	margin:auto;
+	width: 500px;
+}
+
+th, td {
+    border: 1px solid #444444;
+    border-collapse: collapse;
+
+ }

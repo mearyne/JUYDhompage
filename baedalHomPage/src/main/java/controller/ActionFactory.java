@@ -10,6 +10,8 @@ import controller.action.JoinMasterAction;
 import controller.action.JoinUserAction;
 import controller.action.LoginMasterAction;
 import controller.action.LoginUserAction;
+import controller.action.QnaDeleteAction;
+import controller.action.QnaWriteAction;
 import controller.action.UpdateShopAction;
 import controller.action.logOutAction;
 
@@ -42,6 +44,8 @@ public class ActionFactory {
 		else if (command.equals("addorder")) action = new AddOrderAction();
 		else if (command.equals("delMenu")) action = new DeleteMenuAction();
 		else if (command.equals("addMenu")) action = new AddMenuAction();
+		else if (command.equals("QnaWriteAction")) action = new QnaWriteAction();
+		else if (command.equals("QnaDeleteAction")) action = new QnaDeleteAction();
 		return action;
 	}
 	
