@@ -1,3 +1,8 @@
+<%@page import="shop.shopDTO"%>
+<%@page import="order.orderDTO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="shop.shopDAO"%>
+<%@page import="order.orderDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -11,7 +16,15 @@
 <body>
 
 	<%
-	// 유저가 주문했던 목록을 보여주는 페이지입니다
+	String userCode = (String) session.getAttribute("logCode");
+	userCode = userCode.substring(1);
+	int code = Integer.parseInt(userCode);
+	
+	orderDAO odao = orderDAO.getInstance();
+	shopDAO sdao = shopDAO.getInstance();
+	
+	ArrayList<orderDTO> orderdata = odao.getuserlist(code);
+	
 	%>
 	<jsp:include page="/header"></jsp:include>
 	<aside></aside>
@@ -25,11 +38,30 @@
         </div>
       
           <div class="pagedetail"> 
-			<article>정보1</article>
-			<article>정보2</article>
-			<article>정보3</article>
-			<article>정보4</article>
-			<article>정보5</article>
+          <%for(int i=0; i<orderdata.size(); i++){
+        	  orderDTO order = orderdata.get(i);
+        	  shopDTO shop = sdao.getshopData(order.getShopCode());
+        	  
+        	  
+        	  String shopname = shop.getShopName();
+        	  String shopadd = shop.getShopAddress();
+        	  String shopcontact = shop.getShopPhone();
+        	  String shoppic = shop.getShopPic();
+        	  
+        	  %>
+
+			<article id="order<%=i+1 %>">
+			<div id="shoppic"><img src="<%=shoppic %>" style=""></div>
+			<div id="shopname"><%=shopname %></div>
+			<div id="shopadd"><%=shopadd %></div>
+			<div id="shopcontact"><%=shopcontact %></div>
+			<input type="button" onclick="location.href=''">
+			
+			</article>
+          <% 
+          }
+          %>
+			
         </div>
 	</section>
 

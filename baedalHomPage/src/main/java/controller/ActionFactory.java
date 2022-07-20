@@ -1,6 +1,7 @@
 package controller;
 
 import controller.action.AddFavoriteAction;
+import controller.action.AddOrderAction;
 import controller.action.ChangePwAction;
 import controller.action.ChangePwMasterAction;
 import controller.action.JoinMasterAction;
@@ -36,7 +37,7 @@ public class ActionFactory {
 		else if (command.equals("addfavo")) action = new AddFavoriteAction();
 		else if (command.equals("changePwMasterAction")) action = new ChangePwMasterAction();
 		else if (command.equals("updateShopAction")) action = new UpdateShopAction();
-		
+		else if (command.equals("addorder")) action = new AddOrderAction();
 		return action;
 	}
 	
