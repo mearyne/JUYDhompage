@@ -82,9 +82,7 @@ public class userDAO {
 	public userDTO getData(int code) {
 		String sql = "select * from user where userCode =?";
 		try {
-			if (conn == null) {
-				conn = DBManager.getConnection("booking");
-			}
+			conn = DBManager.getConnection("booking");
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, code);
 			rs = pstmt.executeQuery();

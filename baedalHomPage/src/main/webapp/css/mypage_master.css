@@ -60,7 +60,7 @@ section {
 	float: right;
 	width: 70%;
 	height: 90vh;
-	background-color:grey;
+	background-color: grey;
 	text-align: center;
 	padding: 0.073% 0 0 0;
 }
@@ -149,7 +149,7 @@ input[type="text"] {
 article {
 	width: 99%;
 	height: 20%;
-	background-color: grey;
+	background-color: white;
 	border: solid 2px grey;
 	border-radius: 12px;
 	/* 여백 주기 */

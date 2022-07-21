@@ -12,6 +12,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/mypage_master.css">
+    
+    <style>
+    	article {
+    		display: flex;
+    	}
+    
+    	img#menuPic {
+    		width: 150px;
+    		height: 150px;
+    	}
+    	
+    	form {
+    		background-color: white;
+    	}
+    	
+    	input#submitButton {
+    		width: 100px;
+    	}
+    	
+    	.mypage {
+    		background-color: white;
+    	}
+    	
+    </style>
+    
     <title>mypage</title>
 </head>
 <body>
@@ -79,12 +104,14 @@
 				System.out.println("mcode"+mcode);
 			%>
 			<article>
-				<div id="name"><%=mname %></div>
-				<div id="price"><%=price %>원</div>
-				<div id="pic"><img src ="<%=pic%>"></div>
-				<div id="contents"><%=contents %></div>
-				<input type="hidden" name="menucode" value="<%=mcode%>">
-				<input type="submit" value="메뉴 삭제">
+				<div id="pic"><img id="menuPic" src ="<%=pic%>"></div>
+				<div id="contents">
+					<div id="name"><%=mname %></div>
+					<div id="price"><%=price %>원</div>
+					<div id="contents"><%=contents %></div>
+					<input type="hidden" name="menucode" value="<%=mcode%>">
+					<input type="submit" id="submitButton" value="메뉴 삭제">
+				</div>
 			</article>
 			<%
 			}
