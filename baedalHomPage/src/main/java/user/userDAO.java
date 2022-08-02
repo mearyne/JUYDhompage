@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Random;
 
+import org.apache.tomcat.jdbc.pool.ConnectionPool;
+
 import util.DBManager;
 
 public class userDAO {
@@ -72,23 +74,28 @@ public class userDAO {
 			System.out.println("LOGIN ERROR!");
 		} finally {
 			conn = null;
-			
+
 		}
-		System.out.println("로그인할때 logCode 값은 "+ check+"입니다");
+		System.out.println("로그인할때 logCode 값은 " + check + "입니다");
 		return check;
 	}
 
 	// 마이페이지 현재 로그인한 유저의 정보를 가져오기
 	public userDTO getData(int code) {
+		conn = null;
+		pstmt = null;
+		rs = null;
+		
+		System.out.println("-------------메소드 시작");
 		String sql = "select * from user where userCode =?";
+		userDTO dto = null;
 		try {
 			conn = DBManager.getConnection("booking");
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, code);
 			rs = pstmt.executeQuery();
-			System.out.println(rs);
-			while (rs.next()) {
-
+//			System.out.println(rs);
+			if (rs.next()) {
 				int no = rs.getInt(1);
 				String name = rs.getString(2);
 				String id = rs.getString(3);
@@ -99,31 +106,31 @@ public class userDAO {
 //				System.out.println(id);
 //				System.out.println(pw);
 //				System.out.println(con);
-				userDTO dto = new userDTO(no, name, id, pw, con);
-				conn = null;
-
-				return dto;
+				dto = new userDTO(no, name, id, pw, con);
+//				System.out.println("성공");
 			}
-
-			System.out.println("성공");
-
 		} catch (Exception e) {
-			// TODO: handle exception
 			System.out.println("실패");
 			e.printStackTrace();
 
 		} finally {
-			conn = null;
-			pstmt = null;
+			try {
+				rs.close();
+				pstmt.close();
+				conn.close();
+				System.out.println("--------close");
+			} catch (Exception e2) {
+			}
 		}
-		return null;
+		return dto;
 	}
 
 	// 랜덤 4자리코드를 생성하고 중복확인하는 메소드
 	public int chkCode() {
 		Random ran = new Random();
-		int ranNum = ran.nextInt(899) + 1000;
+		int ranNum = ran.nextInt(8999) + 1000;
 		System.out.println(ranNum);
+		int result = -1;
 		try {
 			conn = DBManager.getConnection("booking");
 			String sql = "select userCode from user";
@@ -135,42 +142,56 @@ public class userDAO {
 				System.out.println(code);
 				if (code != 1) {
 					System.out.println("중복 없음");
-					return ranNum;
+					result = ranNum;
 				}
-				pstmt = null;
 			}
 		} catch (SQLException e) {
-			// TODO: handle exception
 			System.out.println("중복 있음");
-			pstmt = null;
 			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				pstmt.close();
+				conn.close();
+
+			} catch (Exception e2) {
+			}
 		}
-		return -1;
+		return result;
 	}
 
 	public boolean chkDuplId(String inputId) {
 		String sql = "select * from user where userId =?";
+		boolean result = false;
 		try {
 			conn = DBManager.getConnection("booking");
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, inputId);
 			rs = pstmt.executeQuery();
-			
+
 			if (rs.next()) {
 				System.out.println("중복된 아이디입니다");
-				return false;
+				result = false;
 			} else {
 				System.out.println("중복된 아이디가 아닙니다");
-				return true;
+				result = true;
 			}
 
 		} catch (Exception e) {
 			System.out.println("실패");
 			e.printStackTrace();
 
+		} finally {
+			try {
+				rs.close();
+				pstmt.close();
+				conn.close();
+
+			} catch (Exception e2) {
+			}
 		}
 
-		return false;
+		return result;
 	}
 
 	public boolean updatePw(int code, String pw, String chPw, String doubleChkPw) {
@@ -195,7 +216,6 @@ public class userDAO {
 					System.out.println(temp);
 					return true;
 				} catch (Exception e) {
-					// TODO: handle exception
 					e.printStackTrace();
 				}
 			}

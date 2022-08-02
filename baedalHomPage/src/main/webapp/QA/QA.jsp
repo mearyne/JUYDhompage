@@ -27,10 +27,10 @@
 	<h1 style="text-align: center;"> QA 게시판 </h1>
 		
 	<form action="../Service"  method="post">
-	<input type="hidden" name="command" value="QnaWriteAction">	
-	<% if (logCodeObject != null) { %>
+		<input type="hidden" name="command" value="QnaWriteAction">	
+		<% if (logCodeObject != null) { %>
 		<input type="button" value="글쓰기" onclick='location.href="./QnaWrite"'>
-	<% } %>
+		<% } %>
 		<table>
 			<thead>
 				<tr id="firstTr">
@@ -42,24 +42,27 @@
 			</thead>
 			<tbody>
 					<%
-					for(int i=0;i<list.size();i++){
+					for(int i = 0; i < list.size(); i++){
 						QnaDTO dto = list.get(i);
+						System.out.println(i+"번째 시작");
 						userDTO udto = udao.getData(dto.getUserCode());
 						
-						int no=dto.getNo();
-						int userCode= udto.getUserCode();
+						int no = dto.getNo();
+						int userCode = udto.getUserCode();
 						String title = dto.getTitle();
-						String contents=dto.getContents();
+						String contents = dto.getContents();
 						String userName = udto.getUserName();
-						String up_date=String.valueOf(dto.getUp_date());
+						String up_date = String.valueOf(dto.getUp_date());
+						
 					%>
 					<tr>
-					<td><%=no %></td>
-					<td onclick='location.href=`QAview?no=<%=no%>`'><%=title %></td>
-					<td><%=userName%></td>
-					<td><%=up_date%></td>
+						<td><%=no %></td>
+						<td onclick='location.href=`QAview?no=<%=no%>`'><%=title %></td>
+						<td><%=userName%></td>
+						<td><%=up_date%></td>
 					</tr>
 					<%
+					System.out.println(i+"번째 끝");
 					}
 					%>
 			</tbody>

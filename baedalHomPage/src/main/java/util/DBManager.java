@@ -9,8 +9,8 @@ public class DBManager {
 	// 외부 클래스에서 db연동이 필요할때, Connection을 얻어갈수있음
 	public static Connection getConnection(String database) {
 		Connection conn = null;
-
-		String url = String.format("jdbc:mysql://database-1.ce8f4awp9h7c.us-west-1.rds.amazonaws.com:3306/%s?serverTimezone=UTC",database);
+		// jdbc:mysql://rds-booking.cnmhmmgrklba.ap-northeast-2.rds.amazonaws.com:3306/
+		String url = String.format("jdbc:mysql://green-database.cnmhmmgrklba.ap-northeast-2.rds.amazonaws.com:3306/%s?serverTimezone=UTC",database);
 		String user = "admin";
 		String password = "1^QLkWd6s9i4";
 		

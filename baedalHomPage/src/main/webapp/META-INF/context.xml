@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<Context>
+	<Resource 
+	   name="booking"
+	   auth="Container" 
+	   driverClassName="com.mysql.cj.jdbc.Driver" 
+	   type="javax.sql.DataSource" 
+	   url="jdbc:mysql://database-1.ce8f4awp9h7c.us-west-1.rds.amazonaws.com:3306/booking?serverTimezone=UTC" 
+	   username="admin"
+	   password="1^QLkWd6s9i4" 
+	   maxActive="10" 
+	   maxWait="1000"> 
+   </Resource>
+	
+</Context>

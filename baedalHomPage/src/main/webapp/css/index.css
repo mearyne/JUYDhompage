@@ -73,8 +73,6 @@ aside {
 	text-align: center;
 }
 
-
-
 div#map {
 	width: 60%;
 	height: 100%;
@@ -150,15 +148,15 @@ div.menuBlock {
 
 #articleList {
 	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
+	flex-direction: column;
+	flex-wrap: nowrap;
 	justify-content: flex-start;
 	height: 60vh;
 }
 
 img {
 	height: 200px;
-    width: 100%;
+	width: 100%;
 	object-fit: contain;
 }
 
@@ -170,5 +168,4 @@ img {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	
 }

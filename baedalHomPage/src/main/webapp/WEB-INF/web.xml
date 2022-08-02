@@ -150,7 +150,7 @@
 		<servlet-name>header</servlet-name>
 		<url-pattern>/header</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>headerNobutton</servlet-name>
 		<jsp-file>/module/headerNobutton.jsp</jsp-file>
@@ -159,7 +159,7 @@
 		<servlet-name>headerNobutton</servlet-name>
 		<url-pattern>/headerNobutton</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>footer</servlet-name>
 		<jsp-file>/module/footer.jsp</jsp-file>
@@ -186,7 +186,7 @@
 		<servlet-name>indexFavorite</servlet-name>
 		<url-pattern>/indexFavorite</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>booking</servlet-name>
 		<jsp-file>/booking/booking.jsp</jsp-file>
@@ -195,7 +195,7 @@
 		<servlet-name>booking</servlet-name>
 		<url-pattern>/booking</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>QA</servlet-name>
 		<jsp-file>/QA/QA.jsp</jsp-file>
@@ -249,5 +249,13 @@
 		<servlet-name>QnaWrite</servlet-name>
 		<url-pattern>/QnaWrite</url-pattern>
 	</servlet-mapping>
-	
+
+<!--  	connection pool을 위한 설정	-->
+	<resource-ref>
+		<description>Connection</description>
+		<res-ref-name>booking</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
+
 </web-app>

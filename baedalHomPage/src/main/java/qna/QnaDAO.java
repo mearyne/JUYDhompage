@@ -1,6 +1,5 @@
 package qna;
 
-
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -23,7 +22,8 @@ public class QnaDAO {
 	private ResultSet rs = null;
 	private PreparedStatement pstmt = null;
 
-	public boolean addQnaData(QnaDTO dto) { // qna 추가
+	// QnA 게시글 추가
+	public boolean addQnaData(QnaDTO dto) {
 		String sql = "insert into qna(no, userCode, title, contents) values(?,?,?,?)";
 
 		try {
@@ -45,13 +45,25 @@ public class QnaDAO {
 			}
 
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e2) {
+			}
+
+
 		}
 		return false;
 	}
 
-	public ArrayList<QnaDTO> getQnaData() { //게시판 전체 목록 불러오기
+	// 게시판 전체 목록 불러오기
+	public ArrayList<QnaDTO> getQnaData() {
 		String sql = "select * from qna";
 		ArrayList<QnaDTO> list = new ArrayList<QnaDTO>();
 		try {
@@ -67,59 +79,86 @@ public class QnaDAO {
 				String contents = rs.getString(4);
 				Timestamp up_date = rs.getTimestamp(5);
 
-				QnaDTO dto = new QnaDTO(no, userCode, title,contents,
-						up_date);
+				QnaDTO dto = new QnaDTO(no, userCode, title, contents, up_date);
 				list.add(dto);
 
 				System.out.println("성공");
 			}
 
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 			System.out.println("실패");
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e2) {
+			}
+
 		}
 		return list;
 	}
-	
-	public QnaDTO getOneQna(int no) { //게시글 읽기
-		QnaDTO dto=new QnaDTO();
-		
-		String sql="select * from qna where no=?";
+
+	// 게시글 읽기
+	public QnaDTO getOneQna(int no) throws SQLException {
+		QnaDTO dto = new QnaDTO();
+
+		String sql = "select * from qna where no=?";
 		try {
 			conn = DBManager.getConnection("booking");
 			pstmt = conn.prepareStatement(sql);
-			
+
 			pstmt.setInt(1, no);
-			rs=pstmt.executeQuery();
-			while(rs.next()) {
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
 				dto.setNo(rs.getInt(1));
 				dto.setUserCode(rs.getInt(2));
 				dto.setTitle(rs.getString(3));
 				dto.setContents(rs.getString(4));
-				dto.setUp_date(rs.getTimestamp(5));				
+				dto.setUp_date(rs.getTimestamp(5));
 			}
-			return dto;
-			
+
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
+			dto = null;
+		} finally {
+			if (rs != null)
+				rs.close();
+			if (pstmt != null)
+				pstmt.close();
+			if (conn != null)
+				conn.close();
+
 		}
-		return null;
+		return dto;
 	}
-	
+
+	// 게시글 삭제
 	public int delete(int no) {
 		String SQL = "delete from qna WHERE no = ?";
 		try {
 			conn = DBManager.getConnection("booking");
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
-			pstmt.setInt(1,no);
+			pstmt.setInt(1, no);
 			return pstmt.executeUpdate(); // 삭제 성공시 1반환
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e2) {
+			}
+
 		}
-		return -1; //데이터베이스 오류, 삭제 실패
+		return -1; // 데이터베이스 오류, 삭제 실패
 	}
 }
-
-
